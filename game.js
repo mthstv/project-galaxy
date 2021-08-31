@@ -70,10 +70,22 @@ scene("game", () => {
 
   // Moving Left with animation 
   keyPress("left", () => {
-    player.play("leanedLeft");
+    if (keyIsDown('x')) {
+      player.play("leanedLeftShoot");
+    } else {
+      player.play("leanedLeft");
+    }
   });
   keyRelease("left", () => {
-    player.play("idle");
+    if (keyIsDown('x') && keyIsDown('right')) {
+      player.play("leanedRightShoot");
+    } else if (keyIsDown('right')) {
+      player.play("leanedRight");
+    } else if (keyIsDown('x')) {
+      player.play("shoot");
+    } else {
+      player.play("idle");
+    }
 	});
   keyDown("left", () => {
     player.move(-MOVE_SPEED, 0)
@@ -81,10 +93,22 @@ scene("game", () => {
 
   // Moving Right with animation 
   keyPress("right", () => {
-    player.play("leanedRight");
+    if (keyIsDown('x')) {
+      player.play("leanedRightShoot");
+    } else {
+      player.play("leanedRight");
+    }
   });
   keyRelease("right", () => {
-    player.play("idle");
+    if (keyIsDown('x') && keyIsDown('left')) {
+      player.play("leanedLeftShoot");
+    } else if (keyIsDown('left')) {
+      player.play("leanedLeft");
+    } else if (keyIsDown('x')) {
+      player.play("shoot");
+    } else {
+      player.play("idle");
+    }
 	});
   keyDown("right", () => {
     player.move(MOVE_SPEED, 0)
@@ -99,11 +123,23 @@ scene("game", () => {
   });
 
 	keyPress("x", () => {
-    player.play("shoot");
+    if (keyIsDown('left')) {
+      player.play("leanedLeftShoot");
+    } else if (keyIsDown('right')) {
+      player.play("leanedRightShoot");
+    } else {
+      player.play("shoot");
+    }
 	});
 
   keyRelease("x", () => {
-    player.play("idle");
+    if (keyIsDown('left')) {
+      player.play("leanedLeft");
+    } else if (keyIsDown('right')) {
+      player.play("leanedRight");
+    } else {
+      player.play("idle");
+    }
 	});
 
 	keyPress("z", () => {
