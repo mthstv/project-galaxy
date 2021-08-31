@@ -10,9 +10,10 @@ kaboom({
 });
 
 // load assets
-loadSprite("nav", "/assets/sprites/nav-spreadsheet-5x5.png", {
-  sliceX: 5,
-  sliceY: 5,
+loadSprite("galaxy", "/assets/sprites/galaxy.jpg");
+loadSprite("nav", "/assets/sprites/nav-spreadsheet-10x10.png", {
+  sliceX: 10,
+  sliceY: 10,
   anims: {
     idle: {
         from: 0,
@@ -20,36 +21,26 @@ loadSprite("nav", "/assets/sprites/nav-spreadsheet-5x5.png", {
     },
     shoot: {
       from: 10,
-      to: 12,
-    },
-    leaningRight: {
-      from: 13,
-      to: 14,
+      to: 18,
     },
     leanedRight: {
-      from: 15,
-      to: 16,
+      from: 20,
+      to: 23,
     },
     leanedRightShoot: {
-      from: 17,
-      to: 19,
-    },
-    leaningLeft: {
-      from: 20,
-      to: 22,
+      from: 24,
+      to: 27,
     },
     leanedLeft: {
-      from: 23,
-      to: 24,
+      from: 40,
+      to: 43,
     },
     leanedLeftShoot: {
-      from: 25,
-      to: 27,
+      from: 44,
+      to: 47,
     },
   },
 });
-loadSprite("galaxy", "/assets/sprites/galaxy.jpg");
-loadSound("blip", "/assets/sounds/blip.mp3");
 
 // defining a scene
 scene("game", () => {
@@ -68,25 +59,33 @@ scene("game", () => {
 	const player = add([
 		sprite("nav"),
 		pos(center()),
-    scale(4),
+    scale(3),
 		area(),
 	]);
 
-  player.play("idle");
+
   const MOVE_SPEED = 200;
 
-	let score = 0;
+  player.play("idle");
 
-	const scoreLabel = add([
-		text(score, 16),
-		pos(12, 12),
-		layer("ui"),
-	]);
-
+  // Moving Left with animation 
+  keyPress("left", () => {
+    player.play("leanedLeft");
+  });
+  keyRelease("left", () => {
+    player.play("idle");
+	});
   keyDown("left", () => {
     player.move(-MOVE_SPEED, 0)
   });
 
+  // Moving Right with animation 
+  keyPress("right", () => {
+    player.play("leanedRight");
+  });
+  keyRelease("right", () => {
+    player.play("idle");
+	});
   keyDown("right", () => {
     player.move(MOVE_SPEED, 0)
   });
@@ -100,20 +99,15 @@ scene("game", () => {
   });
 
 	keyPress("x", () => {
-    score += 1;
-    scoreLabel.text = score;
-		play("blip");
     player.play("shoot");
-    setTimeout(() => {
-      player.play("idle");
-    }, 500)
+	});
+
+  keyRelease("x", () => {
+    player.play("idle");
 	});
 
 	keyPress("z", () => {
-    score += 1;
-    scoreLabel.text = score;
-		play("blip");
-    player.play("shoot");
+    player.play("dodge");
     setTimeout(() => {
       player.play("idle");
     }, 500)
