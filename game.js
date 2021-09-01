@@ -11,7 +11,7 @@ kaboom({
 
 // load assets
 loadSprite("galaxy", "/assets/sprites/galaxy.jpg");
-loadSprite("nav", "/assets/sprites/nav-spreadsheet-10x10.png", {
+loadSprite("nav", "/assets/sprites/nav-spritesheet-10x10.png", {
   sliceX: 10,
   sliceY: 10,
   anims: {
@@ -41,7 +41,7 @@ loadSprite("nav", "/assets/sprites/nav-spreadsheet-10x10.png", {
     },
   },
 });
-loadSprite("bullet", "/assets/sprites/bullet-spreadsheet-5x5.png", {
+loadSprite("bullet", "/assets/sprites/bullet-spritesheet-5x5.png", {
   sliceX: 5,
   sliceY: 5,
   anims: {
@@ -138,15 +138,15 @@ scene("game", () => {
       pos(player.pos.x + 17, player.pos.y - 7),
       scale(1),
       area(),
-      {
-        dir: vec2(-1, 0),
-      }
     ]);
 
     bullet.play('fly');
 
     bullet.action(() => {
       bullet.move(0, -BULLET_SPEED);
+      if(bullet.pos.y < -height()) {
+        bullet.destroy();
+      }
     });
     
     if (keyIsDown('left')) {
