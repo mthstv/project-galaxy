@@ -41,6 +41,16 @@ loadSprite("nav", "/assets/sprites/nav-spreadsheet-10x10.png", {
     },
   },
 });
+loadSprite("bullet", "/assets/sprites/bullet-spreadsheet-5x5.png", {
+  sliceX: 5,
+  sliceY: 5,
+  anims: {
+    fly: {
+        from: 0,
+        to: 4,
+    },
+  },
+});
 
 // defining a scene
 scene("game", () => {
@@ -62,7 +72,6 @@ scene("game", () => {
     scale(3),
 		area(),
 	]);
-
 
   const MOVE_SPEED = 200;
 
@@ -123,6 +132,15 @@ scene("game", () => {
   });
 
 	keyPress("x", () => {
+    const bullet = add([
+      sprite("bullet"),
+      pos(player.pos.x + 17, player.pos.y - 7),
+      scale(1),
+      area()
+    ]);
+
+    bullet.play('fly');
+    
     if (keyIsDown('left')) {
       player.play("leanedLeftShoot");
     } else if (keyIsDown('right')) {
