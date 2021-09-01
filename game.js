@@ -75,6 +75,7 @@ scene("game", () => {
 
   const MOVE_SPEED = 200;
   const BULLET_SPEED = 400;
+  let PLAYER_SHOOT_SPEED = 0.1;
 
   player.play("idle");
 
@@ -132,23 +133,24 @@ scene("game", () => {
     player.move(MOVE_SPEED, 0)
   });
 
+  action("bullet", (b) => {
+    b.move(vec2(0, -BULLET_SPEED));
+
+    if (b.pos.y < -height()) {
+      b.destroy();
+    }
+    
+    b.play('fly');
+  });
+
 	keyPress("x", () => {
-    const bullet = add([
+    add([
       sprite("bullet"),
-      pos(player.pos.x + 17, player.pos.y - 7),
+      pos(player.pos.x + 17, player.pos.y - 2),
       scale(1),
-      area(),
+      "bullet"
     ]);
 
-    bullet.play('fly');
-
-    bullet.action(() => {
-      bullet.move(0, -BULLET_SPEED);
-      if(bullet.pos.y < -height()) {
-        bullet.destroy();
-      }
-    });
-    
     if (keyIsDown('left')) {
       player.play("leanedLeftShoot");
     } else if (keyIsDown('right')) {
@@ -157,6 +159,17 @@ scene("game", () => {
       player.play("shoot");
     }
 	});
+
+  loop(PLAYER_SHOOT_SPEED, () => {
+    if (keyIsDown('x')) {
+      add([
+        sprite("bullet"),
+        pos(player.pos.x + 17, player.pos.y - 2),
+        scale(1),
+        "bullet"
+      ]);
+    }
+  });
 
   keyRelease("x", () => {
     if (keyIsDown('left')) {
