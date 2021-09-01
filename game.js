@@ -16,8 +16,8 @@ loadSprite("nav", "/assets/sprites/nav-spritesheet-10x10.png", {
   sliceY: 10,
   anims: {
     idle: {
-        from: 0,
-        to: 9,
+      from: 0,
+      to: 9,
     },
     shoot: {
       from: 10,
@@ -46,8 +46,8 @@ loadSprite("bullet", "/assets/sprites/bullet-spritesheet-5x5.png", {
   sliceY: 5,
   anims: {
     fly: {
-        from: 0,
-        to: 4,
+      from: 0,
+      to: 4,
     },
   },
 });
@@ -75,7 +75,7 @@ scene("game", () => {
 
   const MOVE_SPEED = 200;
   const BULLET_SPEED = 400;
-  let PLAYER_SHOOT_SPEED = 0.1;
+  let PLAYER_SHOOT_SPEED = 0.15;
 
   player.play("idle");
 
@@ -107,7 +107,7 @@ scene("game", () => {
     }
 	});
   keyDown("left", () => {
-    player.move(-MOVE_SPEED, 0)
+    player.move(-MOVE_SPEED, 0);
   });
 
   // Moving Right with animation 
@@ -130,7 +130,7 @@ scene("game", () => {
     }
 	});
   keyDown("right", () => {
-    player.move(MOVE_SPEED, 0)
+    player.move(MOVE_SPEED, 0);
   });
 
   action("bullet", (b) => {
@@ -139,18 +139,9 @@ scene("game", () => {
     if (b.pos.y < -height()) {
       b.destroy();
     }
-    
-    b.play('fly');
   });
 
 	keyPress("x", () => {
-    add([
-      sprite("bullet"),
-      pos(player.pos.x + 17, player.pos.y - 2),
-      scale(1),
-      "bullet"
-    ]);
-
     if (keyIsDown('left')) {
       player.play("leanedLeftShoot");
     } else if (keyIsDown('right')) {
@@ -162,12 +153,14 @@ scene("game", () => {
 
   loop(PLAYER_SHOOT_SPEED, () => {
     if (keyIsDown('x')) {
-      add([
+      const bullet = add([
         sprite("bullet"),
         pos(player.pos.x + 17, player.pos.y - 2),
         scale(1),
         "bullet"
       ]);
+
+      bullet.play('fly');
     }
   });
 
