@@ -74,8 +74,17 @@ scene("game", () => {
 	]);
 
   const MOVE_SPEED = 200;
+  const BULLET_SPEED = 400;
 
   player.play("idle");
+
+  keyDown("up", () => {
+    player.move(0, -MOVE_SPEED)
+  });
+
+  keyDown("down", () => {
+    player.move(0, MOVE_SPEED)
+  });
 
   // Moving Left with animation 
   keyPress("left", () => {
@@ -123,23 +132,22 @@ scene("game", () => {
     player.move(MOVE_SPEED, 0)
   });
 
-  keyDown("up", () => {
-    player.move(0, -MOVE_SPEED)
-  });
-
-  keyDown("down", () => {
-    player.move(0, MOVE_SPEED)
-  });
-
 	keyPress("x", () => {
     const bullet = add([
       sprite("bullet"),
       pos(player.pos.x + 17, player.pos.y - 7),
       scale(1),
-      area()
+      area(),
+      {
+        dir: vec2(-1, 0),
+      }
     ]);
 
     bullet.play('fly');
+
+    bullet.action(() => {
+      bullet.move(0, -BULLET_SPEED);
+    });
     
     if (keyIsDown('left')) {
       player.play("leanedLeftShoot");
@@ -158,13 +166,6 @@ scene("game", () => {
     } else {
       player.play("idle");
     }
-	});
-
-	keyPress("z", () => {
-    player.play("dodge");
-    setTimeout(() => {
-      player.play("idle");
-    }, 500)
 	});
 });
 
