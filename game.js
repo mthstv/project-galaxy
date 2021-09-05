@@ -101,7 +101,7 @@ scene("game", () => {
   const MOVE_SPEED = 200;
   const BULLET_SPEED = 400;
   let PLAYER_SHOOT_SPEED = 0.2;
-  const PLAYER_SCALE_ONE = [2, 11, 0.8];
+  const PLAYER_SCALE_ONE = [2, 9.5, 1];
   const PLAYER_SCALE_TWO = [3, 17, 1];
 
   // PLAYER
