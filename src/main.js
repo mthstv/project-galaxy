@@ -7,7 +7,7 @@ kaboom({
 	debug: true,
 	fullscreen: true,
 	// pixel scale
-	scale: 2,
+	scale: 1,
 	// black background color
 	clearColor: [ 0, 0, 0, 1 ],
   font: "sinko",
@@ -16,7 +16,7 @@ kaboom({
 // load assets
 loadSprite("galaxy", "/assets/sprites/backgrounds/galaxy.jpg");
 loadSprite("galaxy2", "/assets/sprites/backgrounds/galaxy2.jpg");
-loadSprite("nav", "/assets/sprites/players/nav-no-fire-spritesheet-10x10.png", {
+loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {
   sliceX: 10,
   sliceY: 10,
   anims: {
@@ -46,13 +46,13 @@ loadSprite("nav", "/assets/sprites/players/nav-no-fire-spritesheet-10x10.png", {
     },
   },
 });
-loadSprite("bullet", "/assets/sprites/bullets/blue-spritesheet-5x5.png", {
+loadSprite("bullet", "/assets/sprites/bullets/blue-spritesheet-160x160.png", {
   sliceX: 5,
   sliceY: 5,
   anims: {
     fly: {
-      from: 0,
-      to: 4,
+      from: 5,
+      to: 9,
     },
   },
 });
@@ -78,6 +78,7 @@ scene("game", () => {
       pos(center().x, center().y - 40),
       origin("center"),
       layer("ui"),
+      scale(2),
       lifespan(2),
     ]);
   }
@@ -126,22 +127,25 @@ scene("game", () => {
   
   loadBackgrounds();
 
-  const MOVE_SPEED = 200;
-  const BULLET_SPEED = 400;
+  const MOVE_SPEED = 400;
+  const BULLET_SPEED = 600;
   let PLAYER_SHOOT_SPEED = 0.2;
-  const PLAYER_SCALE_ONE = [2, 9.5, 1];
-  const PLAYER_SCALE_TWO = [3, 17, 1];
+  const GAME_SCALE_ADJUSTMENTS = {
+    playerScale: 2, 
+    bulletScale: 1,
+    bulletXPosition: 16 
+  };
 
   const player = add([
     sprite("nav"),
     pos(center()),
-    scale(PLAYER_SCALE_ONE[0]),
+    scale(GAME_SCALE_ADJUSTMENTS.playerScale),
     area(),
     "player",
   ]);
   
   function loadPlayerMovementAnim() {
-    player.play("idle");
+    player.play("idle", { loop: true });
 
     // PLAYER MOVEMENT
 
@@ -156,20 +160,20 @@ scene("game", () => {
     // Moving Left with animation 
     keyPress("left", () => {
       if (keyIsDown("x")) {
-        player.play("leanedLeftShoot");
+        player.play("leanedLeftShoot", { loop: true });
       } else {
-        player.play("leanedLeft");
+        player.play("leanedLeft", { loop: true });
       }
     });
     keyRelease("left", () => {
       if (keyIsDown("x") && keyIsDown("right")) {
-        player.play("leanedRightShoot");
+        player.play("leanedRightShoot", { loop: true });
       } else if (keyIsDown("right")) {
-        player.play("leanedRight");
+        player.play("leanedRight", { loop: true });
       } else if (keyIsDown("x")) {
-        player.play("shoot");
+        player.play("shoot", { loop: true });
       } else {
-        player.play("idle");
+        player.play("idle", { loop: true });
       }
     });
     keyDown("left", () => {
@@ -179,20 +183,20 @@ scene("game", () => {
     // Moving Right with animation 
     keyPress("right", () => {
       if (keyIsDown("x")) {
-        player.play("leanedRightShoot");
+        player.play("leanedRightShoot", { loop: true });
       } else {
-        player.play("leanedRight");
+        player.play("leanedRight", { loop: true });
       }
     });
     keyRelease("right", () => {
       if (keyIsDown("x") && keyIsDown("left")) {
-        player.play("leanedLeftShoot");
+        player.play("leanedLeftShoot", { loop: true });
       } else if (keyIsDown("left")) {
-        player.play("leanedLeft");
+        player.play("leanedLeft", { loop: true });
       } else if (keyIsDown("x")) {
-        player.play("shoot");
+        player.play("shoot", { loop: true });
       } else {
-        player.play("idle");
+        player.play("idle", { loop: true });
       }
     });
     keyDown("right", () => {
@@ -213,11 +217,11 @@ scene("game", () => {
   
     keyPress("x", () => {
       if (keyIsDown("left")) {
-        player.play("leanedLeftShoot");
+        player.play("leanedLeftShoot", { loop: true });
       } else if (keyIsDown("right")) {
-        player.play("leanedRightShoot");
+        player.play("leanedRightShoot", { loop: true });
       } else {
-        player.play("shoot");
+        player.play("shoot", { loop: true });
       }
     });
   
@@ -225,22 +229,22 @@ scene("game", () => {
       if (keyIsDown("x")) {
         const bullet = add([
           sprite("bullet"),
-          pos(player.pos.x + PLAYER_SCALE_ONE[1], player.pos.y - 2),
-          scale(PLAYER_SCALE_ONE[2]),
+          pos(player.pos.x + GAME_SCALE_ADJUSTMENTS.bulletXPosition, player.pos.y - 10),
+          scale(GAME_SCALE_ADJUSTMENTS.bulletScale),
           "bullet"
         ]);
   
-        bullet.play("fly");
+        bullet.play("fly", { loop: true });
       }
     });
   
     keyRelease("x", () => {
       if (keyIsDown("left")) {
-        player.play("leanedLeft");
+        player.play("leanedLeft", { loop: true });
       } else if (keyIsDown("right")) {
-        player.play("leanedRight");
+        player.play("leanedRight", { loop: true });
       } else {
-        player.play("idle");
+        player.play("idle", { loop: true });
       }
     });
   }
@@ -265,16 +269,33 @@ scene("menu", () => {
 		text(currentLanguage.title, 64),
 		pos(center()),
 		origin("center"),
-    layer("ui")
+    layer("ui"),
+    scale(2),
 	]);
 
   add([
 		text(currentLanguage.subtitle, 16),
 		pos(center().x, center().y + 60),
 		origin("center"),
-    layer("ui")
+    layer("ui"),
+    scale(2),
 	]);
 
+  add([
+		text('developed by @m4ths_dev', 8),
+		pos(width(), height() - 20),
+		origin("right"),
+    layer("ui"),
+    scale(1),
+	]);
+
+  add([
+		text('pixel arts by @m4ths_dev and @breelbo', 8),
+		pos(width(), height() - 10),
+		origin("right"),
+    layer("ui"),
+    scale(1),
+	]);
 
 	keyPress("space", () => {
 		go("game");
