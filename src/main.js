@@ -66,7 +66,7 @@ if (window.navigator.language === "pt-BR") {
 }
 
 const MOVE_SPEED = 400;
-const BULLET_SPEED = 0;
+const BULLET_SPEED = 600;
 const GAME_SCALE_ADJUSTMENTS = {
   playerScale: 2, 
   bulletScale: 1,
