@@ -46,12 +46,12 @@ loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {
     },
   },
 });
-loadSprite("bullet", "/assets/sprites/bullets/blue-spritesheet-160x160.png", {
-  sliceX: 5,
-  sliceY: 5,
+loadSprite("bullet", "/assets/sprites/bullets/blue-spritesheet-180x18.png", {
+  sliceX: 10,
+  sliceY: 1,
   anims: {
     fly: {
-      from: 5,
+      from: 0,
       to: 9,
     },
   },
@@ -64,6 +64,16 @@ if (window.navigator.language === "pt-BR") {
 } else {
   currentLanguage = languages.en;
 }
+
+const MOVE_SPEED = 400;
+const BULLET_SPEED = 0;
+const GAME_SCALE_ADJUSTMENTS = {
+  playerScale: 2, 
+  bulletScale: 1,
+  bulletXPosition: 23 
+};
+let PLAYER_SHOOT_SPEED = 0.2;
+
 
 scene("game", () => {
 	layers([
@@ -126,15 +136,6 @@ scene("game", () => {
   }
   
   loadBackgrounds();
-
-  const MOVE_SPEED = 400;
-  const BULLET_SPEED = 600;
-  let PLAYER_SHOOT_SPEED = 0.2;
-  const GAME_SCALE_ADJUSTMENTS = {
-    playerScale: 2, 
-    bulletScale: 1,
-    bulletXPosition: 16 
-  };
 
   const player = add([
     sprite("nav"),
