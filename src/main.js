@@ -57,6 +57,17 @@ loadSprite("bullet", "/assets/sprites/bullets/blue-spritesheet-180x18.png", {
   },
 });
 
+loadSprite("asteroid", "/assets/sprites/enemies/asteroid-enemy-spritesheet-160x160.png", {
+  sliceX: 10,
+  sliceY: 1,
+  anims: {
+    fly: {
+      from: 0,
+      to: 9,
+    },
+  },
+});
+
 // choose language
 let currentLanguage = {};
 if (window.navigator.language === "pt-BR") {
@@ -66,7 +77,7 @@ if (window.navigator.language === "pt-BR") {
 }
 
 const MOVE_SPEED = 400;
-const BULLET_SPEED = 600;
+const BULLET_SPEED = 500;
 const GAME_SCALE_ADJUSTMENTS = {
   playerScale: 2, 
   bulletScale: 1,
