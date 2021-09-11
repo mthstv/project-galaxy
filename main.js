@@ -255,6 +255,12 @@ scene("menu", () => {
 		"ui",
 	], "menu");
 
+  add([
+    sprite("galaxy", { width: width(), height: height(), }),
+    pos(0, 0),
+    layer("bg"),
+  ]);
+
 	add([
 		text(currentLanguage.title, 64),
 		pos(center()),
@@ -266,6 +272,7 @@ scene("menu", () => {
 		text(currentLanguage.subtitle, 16),
 		pos(center().x, center().y + 60),
 		origin("center"),
+    layer("ui")
 	]);
 
 
