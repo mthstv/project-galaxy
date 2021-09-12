@@ -2,7 +2,7 @@ export default function loadAsteroid(life, speed, scoreCounter) {
   loop(0.5, () => {
     const asteroid = add([
       sprite("asteroid"),
-      pos(rand(0, width()), -height() + 600),
+      pos(rand(0, width()), -20),
       scale(2),
       area({ scale: 1 }),
       origin("center"),

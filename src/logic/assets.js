@@ -43,7 +43,8 @@ export default function loadAssets() {
     },
   });
 
-  loadSprite("red-bullet", "/assets/sprites/bullets/red-spritesheet-7x12.png");
+  loadSprite("health-point-filled", "/assets/sprites/players/health/filled-spritesheet-7x12.png");
+  loadSprite("health-point-empty", "/assets/sprites/players/health/empty-spritesheet-7x12.png");
 
   loadSprite("asteroid", "/assets/sprites/enemies/asteroid-enemy-spritesheet-100x27.png", {
     sliceX: 5,

@@ -21,6 +21,15 @@ export default function loadBullet(player, playerShootSpeed, speed, damage) {
       bullet.play("fly", { loop: true });
       bullet.collides("asteroid", (a) => {
         a.hurt(damage);
+
+        add([
+          text("-" + damage),
+          pos(a.pos),
+          origin("botleft"),
+          lifespan(0.5),
+          scale(1),
+        ]);
+
         bullet.destroy();
         shake(2);
       });
