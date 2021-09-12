@@ -2,7 +2,7 @@ import kaboom from "https://unpkg.com/kaboom@next/dist/kaboom.mjs";
 import loadLanguage from "./languages.js";
 import { loadMenuScene } from "./scenes/menu.js";
 import { loadGameScene } from "./scenes/game.js";
-import loadAssets from "./assets/load.js";
+import loadAssets from "./logic/assets.js";
 
 kaboom({
 	global: true,
