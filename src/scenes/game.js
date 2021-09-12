@@ -1,4 +1,5 @@
 import loadTutorial from "../logic/tutorial.js";
+import loadUi from "../logic/ui.js";
 import loadBackgrounds from "../logic/background.js";
 import loadAsteroid from "../logic/asteroid.js";
 import loadPlayer from "../logic/player.js";
@@ -20,14 +21,16 @@ export function loadGameScene(currentLanguage) {
     const ASTEROID_DAMAGE = 5;
     const BULLET_SPEED = 500;
     const BACKGROUND_SPEED = 80;
-    const ASTEROID_SPEED = 200;
-
-    let playerShootSpeed = 0.2;
+    const ASTEROID_SPEED = 300;
 
     loadTutorial(currentLanguage);
+  
+    let playerShootSpeed = 0.2;
+    const scoreCounter = loadUi();
+
     loadBackgrounds(BACKGROUND_SPEED);
-    loadAsteroid(ASTEROID_LIFE, ASTEROID_SPEED);
-    loadPlayer(PLAYER_LIFE, ASTEROID_DAMAGE);
+    loadAsteroid(ASTEROID_LIFE, ASTEROID_SPEED, scoreCounter);
+    loadPlayer(PLAYER_LIFE, ASTEROID_DAMAGE, scoreCounter);
 
     const player = get("player")[0];
     handlePlayerMovementAnimations(player, PLAYER_MOVE_SPEED);
