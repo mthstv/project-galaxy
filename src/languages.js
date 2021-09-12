@@ -10,4 +10,11 @@ export const en = {
   "subtitle": "Press Space to start"
 }
 
-export default { pt, en }
+export async function loadLanguage(browserLanguage) {
+  if (browserLanguage === "pt-BR") {
+    return pt;
+  }
+  return en;
+}
+
+export default loadLanguage
