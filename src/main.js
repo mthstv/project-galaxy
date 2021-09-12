@@ -14,9 +14,10 @@ kaboom({
 });
 
 // load assets
-loadSprite("galaxy", "/assets/sprites/backgrounds/galaxy.jpg");
-loadSprite("galaxy2", "/assets/sprites/backgrounds/galaxy2.jpg");
-loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {
+loadSprite("galaxy", "/assets/sprites/backgrounds/space-breelbo.jpg");
+loadSprite("galaxy2", "/assets/sprites/backgrounds/space-breelbo2.jpg");
+loadSprite("galaxy3", "/assets/sprites/backgrounds/space-breelbo3.jpg");
+loadSprite("nav", "/assets/sprites/players/nav2-spritesheet-320x320.png", {
   sliceX: 10,
   sliceY: 10,
   anims: {
@@ -37,12 +38,12 @@ loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {
       to: 27,
     },
     leanedLeft: {
-      from: 40,
-      to: 43,
+      from: 30,
+      to: 33,
     },
     leanedLeftShoot: {
-      from: 44,
-      to: 47,
+      from: 34,
+      to: 37,
     },
   },
 });
@@ -78,6 +79,7 @@ if (window.navigator.language === "pt-BR") {
 
 const MOVE_SPEED = 400;
 const BULLET_SPEED = 500;
+const BACKGROUND_SPEED = 80;
 const GAME_SCALE_ADJUSTMENTS = {
   playerScale: 2, 
   bulletScale: 1,
@@ -123,7 +125,7 @@ scene("game", () => {
     ]);
   
     action("bg", (b) => {
-      b.move(0, 1);
+      b.move(0, BACKGROUND_SPEED);
       if (b.pos.y > height()) {
         b.destroy();
         if (b.is("bgaux")) {
@@ -272,7 +274,7 @@ scene("menu", () => {
 	], "menu");
 
   add([
-    sprite("galaxy", { width: width(), height: height(), }),
+    sprite("galaxy3", { width: width(), height: height(), }),
     pos(0, 0),
     layer("bg"),
   ]);
