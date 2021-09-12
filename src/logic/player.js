@@ -18,4 +18,6 @@ export default function loadPlayer(life, asteroidDamage, scoreCounter) {
       go("end", scoreCounter);
     }
   });
+
+  return player;
 }

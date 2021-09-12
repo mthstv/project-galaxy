@@ -29,10 +29,10 @@ export function loadGameScene(currentLanguage) {
     const scoreCounter = loadUi();
 
     loadBackgrounds(BACKGROUND_SPEED);
+    
+    const player = loadPlayer(PLAYER_LIFE, ASTEROID_DAMAGE, scoreCounter);
+    
     loadAsteroid(ASTEROID_LIFE, ASTEROID_SPEED, scoreCounter);
-    loadPlayer(PLAYER_LIFE, ASTEROID_DAMAGE, scoreCounter);
-
-    const player = get("player")[0];
     handlePlayerMovementAnimations(player, PLAYER_MOVE_SPEED);
     loadBullet(player, playerShootSpeed, BULLET_SPEED, BULLET_DAMAGE);
   });
