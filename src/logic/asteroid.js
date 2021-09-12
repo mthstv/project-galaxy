@@ -1,11 +1,13 @@
-export default function loadAsteroid(life, speed) {
-  loop(1, () => {
+export default function loadAsteroid(life, speed, scoreCounter) {
+  loop(0.5, () => {
     const asteroid = add([
       sprite("asteroid"),
       pos(rand(0, width()), -height() + 600),
       scale(2),
-      area(),
+      area({ scale: 1 }),
+      origin("center"),
       health(life),
+      rotate(rand(-45, 45)),
       "asteroid",
       "enemy"
     ]);
@@ -14,12 +16,16 @@ export default function loadAsteroid(life, speed) {
   });
 
   action("asteroid", (a) => {
-    a.move(0, speed);
-    if (a.pos.y > 700) {
+    a.move(a.angle * (-8), speed);
+
+    if (a.pos.y > height()) {
       a.destroy();
     }
+
     if (a.hp() <= 0) {
       a.destroy();
+      scoreCounter.value += 1;
+      scoreCounter.text = scoreCounter.value;
     }
   });
 }
