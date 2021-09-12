@@ -11,8 +11,9 @@ export default function loadBullet(player, playerShootSpeed, speed, damage) {
     if (keyIsDown("x")) {
       const bullet = add([
         sprite("bullet"),
-        area(),
-        pos(player.pos.x + 23, player.pos.y - 10),
+        area({ scale: 0.8 }),
+        origin("center"),
+        pos(player.pos.x, player.pos.y - 20),
         scale(1),
         "bullet"
       ]);
