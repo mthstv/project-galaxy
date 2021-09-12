@@ -17,11 +17,9 @@ kaboom({
 loadAssets();
 
 const currentLanguage = await loadLanguage(window.navigator.language);
-let playerName = getData("player-name", "") || "";
-let playerBest = getData("player-best", 0) || 0;
 
 loadGameScene(currentLanguage);
-loadMenuScene(currentLanguage, playerName, playerBest);
-loadEndScene(currentLanguage, playerBest);
+loadMenuScene(currentLanguage);
+loadEndScene(currentLanguage);
 
 go("menu");

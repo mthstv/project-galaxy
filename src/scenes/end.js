@@ -1,5 +1,7 @@
-export function loadEndScene(currentLanguage, playerBest) {
+export function loadEndScene(currentLanguage) {
   scene("end", (playerScore) => {
+    let playerBest = getData("player-best", 0) || 0;
+
     if (playerScore.value > playerBest) {
       playerBest = playerScore.value;
       setData("player-best", playerScore.value);

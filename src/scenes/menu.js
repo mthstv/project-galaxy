@@ -1,5 +1,8 @@
-export function loadMenuScene(currentLanguage, playerName, playerBest) {
-  scene("menu", (newplayerBest) => {
+export function loadMenuScene(currentLanguage) {
+  scene("menu", () => {
+    let playerName = getData("player-name", "") || "";
+    let playerBest = getData("player-best", 0) || 0;
+
     layers([
       "bg",
       "ui",
@@ -70,7 +73,7 @@ export function loadMenuScene(currentLanguage, playerName, playerBest) {
     });
 
     add([
-      text(currentLanguage.personalBest + (newplayerBest ? newplayerBest : playerBest)),
+      text(currentLanguage.personalBest + playerBest),
       pos(center().x, center().y + 380),
       origin("center"),
       layer("ui"),
