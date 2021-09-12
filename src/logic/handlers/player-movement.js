@@ -1,10 +1,14 @@
 export default function handlePlayerMovementAnimations(player, moveSpeed) {
   keyDown("up", () => {
-    player.move(0, -moveSpeed)
+    if (player.pos.y > 0) {
+      player.move(0, -moveSpeed);
+    }
   });
 
   keyDown("down", () => {
-    player.move(0, moveSpeed)
+    if (player.pos.y < height()) {
+      player.move(0, moveSpeed);
+    }
   });
 
   // Moving Left with animation 
@@ -27,7 +31,9 @@ export default function handlePlayerMovementAnimations(player, moveSpeed) {
     }
   });
   keyDown("left", () => {
-    player.move(-moveSpeed, 0);
+    if (player.pos.x > 0) {
+      player.move(-moveSpeed, 0);
+    }
   });
 
   // Moving Right with animation 
@@ -50,7 +56,9 @@ export default function handlePlayerMovementAnimations(player, moveSpeed) {
     }
   });
   keyDown("right", () => {
-    player.move(moveSpeed, 0);
+    if (player.pos.x < width()) {
+      player.move(moveSpeed, 0);
+    }
   });
 
   keyPress("x", () => {
