@@ -7,7 +7,7 @@ export default function loadAsteroid(life, speed, scoreCounter) {
       area({ scale: 1 }),
       origin("center"),
       health(life),
-      rotate(rand(-45, 45)),
+      rotate(rand(-30, 30)),
       "asteroid",
       "enemy"
     ]);
@@ -16,7 +16,7 @@ export default function loadAsteroid(life, speed, scoreCounter) {
   });
 
   action("asteroid", (a) => {
-    a.move(a.angle * (-8), speed);
+    a.move(a.angle * (-9), speed);
 
     if (a.pos.y > height()) {
       a.destroy();
