@@ -43,9 +43,11 @@ export default function loadAssets() {
     },
   });
 
-  loadSprite("asteroid", "/assets/sprites/enemies/asteroid-enemy-spritesheet-160x160.png", {
+  loadSprite("red-bullet", "/assets/sprites/bullets/red-spritesheet-7x12.png");
+
+  loadSprite("asteroid", "/assets/sprites/enemies/asteroid-enemy-spritesheet-100x27.png", {
     sliceX: 5,
-    sliceY: 5,
+    sliceY: 1,
     anims: {
       fly: {
         from: 0,
