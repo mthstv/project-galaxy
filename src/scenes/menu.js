@@ -1,5 +1,5 @@
-export function loadMenuScene(currentLanguage) {
-  scene("menu", () => {
+export function loadMenuScene(currentLanguage, playerName, playerBest) {
+  scene("menu", (newplayerBest) => {
     layers([
       "bg",
       "ui",
@@ -12,7 +12,7 @@ export function loadMenuScene(currentLanguage) {
     ]);
   
     add([
-      text(currentLanguage.title, 64),
+      text(currentLanguage.title),
       pos(center()),
       origin("center"),
       layer("ui"),
@@ -20,7 +20,7 @@ export function loadMenuScene(currentLanguage) {
     ]);
   
     add([
-      text(currentLanguage.subtitle, 16),
+      text(currentLanguage.subtitle),
       pos(center().x, center().y + 60),
       origin("center"),
       layer("ui"),
@@ -28,13 +28,13 @@ export function loadMenuScene(currentLanguage) {
     ]);
   
     add([
-      text('developed by @m4ths_dev', 8),
+      text('developed by @m4ths_dev'),
       pos(width(), height() - 20),
       origin("right"),
       layer("ui"),
       scale(1),
     ]);
-  
+
     add([
       text('pixel arts by @m4ths_dev and @breelbo', 8),
       pos(width(), height() - 10),
@@ -42,8 +42,43 @@ export function loadMenuScene(currentLanguage) {
       layer("ui"),
       scale(1),
     ]);
+
+    const nameLabel = add([
+      text(currentLanguage.nameInput),
+      pos(0, 0),
+      origin("topleft"),
+      layer("ui"),
+      scale(2),
+    ]);
+
+    const input = add([
+      text(playerName),
+      pos(nameLabel.width * 2, 0),
+      origin("topleft"),
+      layer("ui"),
+      scale(2),
+    ]);
   
+    charInput((ch) => {
+      if (ch !== " ") {
+        input.text += ch;
+      }
+    });
+
+    keyPressRep("backspace", () => {
+      input.text = input.text.substring(0, input.text.length - 1);
+    });
+
+    add([
+      text(currentLanguage.personalBest + (newplayerBest ? newplayerBest : playerBest)),
+      pos(center().x, center().y + 380),
+      origin("center"),
+      layer("ui"),
+      scale(2),
+    ]);
+
     keyPress("space", () => {
+      setData("player-name", input.text);
       go("game");
     });
   });
