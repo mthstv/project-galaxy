@@ -22,6 +22,6 @@ let playerBest = getData("player-best", 0) || 0;
 
 loadGameScene(currentLanguage);
 loadMenuScene(currentLanguage, playerName, playerBest);
-loadEndScene(playerBest);
+loadEndScene(currentLanguage, playerBest);
 
 go("menu");

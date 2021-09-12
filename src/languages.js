@@ -3,7 +3,11 @@ export const pt = {
   "title": "Project Galaxy",
   "subtitle": "Aperte Espaco para comecar",
   "nameInput": "Seu nome: ",
-  "personalBest": "Melhor pontuacao: "
+  "personalBest": "Melhor pontuacao: ",
+  "battleReport": {
+    "title": "FIM DA BATALHA",
+    "asteroids": "Asteroides destruidos: "
+  }
 }
 
 export const en = {
@@ -11,7 +15,11 @@ export const en = {
   "title": "Project Galaxy",
   "subtitle": "Press Space to start",
   "nameInput": "Your name: ",
-  "personalBest": "Personal Best: "
+  "personalBest": "Personal Best: ",
+  "battleReport": {
+    "title": "BATTLE REPORT",
+    "asteroids": "Asteroids destroyed: "
+  }
 }
 
 export async function loadLanguage(browserLanguage) {

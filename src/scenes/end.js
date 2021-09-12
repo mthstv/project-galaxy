@@ -1,4 +1,4 @@
-export function loadEndScene(playerBest) {
+export function loadEndScene(currentLanguage, playerBest) {
   scene("end", (playerScore) => {
     if (playerScore.value > playerBest) {
       playerBest = playerScore.value;
@@ -17,7 +17,7 @@ export function loadEndScene(playerBest) {
     ]);
 
     add([
-      text("BATTLE REPORT"),
+      text(currentLanguage.battleReport.title),
       pos(center().x, center().y - 120),
       origin("center"),
       layer("ui"),
@@ -25,7 +25,7 @@ export function loadEndScene(playerBest) {
     ]);
   
     add([
-      text("Asteroids destroyed: " + playerScore.value, 64),
+      text(currentLanguage.battleReport.asteroids + playerScore.value, 64),
       pos(center().x, center().y + 80),
       origin("center"),
       layer("ui"),
