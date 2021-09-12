@@ -11,6 +11,7 @@ export default function loadPlayer(life, asteroidDamage) {
   player.play("idle", { loop: true });
   player.collides("enemy", (e) => {
     player.hurt(asteroidDamage);
+    shake(10);
     e.destroy();
     if (player.hp() <= 0) {
       go("menu");
