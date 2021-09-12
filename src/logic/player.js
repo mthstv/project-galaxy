@@ -1,9 +1,10 @@
-export default function loadPlayer(life, asteroidDamage) {
+export default function loadPlayer(life, asteroidDamage, scoreCounter) {
   const player = add([
     sprite("nav"),
     pos(center()),
     scale(2),
-    area(),
+    area({ scale: 0.7 }),
+    origin("center"),
     health(life),
     "player",
   ]);
@@ -14,7 +15,7 @@ export default function loadPlayer(life, asteroidDamage) {
     shake(10);
     e.destroy();
     if (player.hp() <= 0) {
-      go("menu");
+      go("end", scoreCounter);
     }
   });
 }
