@@ -18,7 +18,7 @@ export function loadGameScene(currentLanguage) {
 
     const PLAYER_MOVE_SPEED = 400;
     const PLAYER_LIFE = 10;
-    const PLAYER_SPECIAL_LIMIT = 5;
+    const PLAYER_SPECIAL_LIMIT = 6;
     const ASTEROID_LIFE = 8;
     const BULLET_DAMAGE = 4;
     const ASTEROID_DAMAGE = 3;
