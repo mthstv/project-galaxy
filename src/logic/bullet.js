@@ -27,7 +27,7 @@ export default function loadBullet(player, playerShootSpeed, speed, damage) {
           pos(a.pos),
           origin("botleft"),
           lifespan(0.5),
-          scale(1),
+          scale(1.2),
         ]);
 
         bullet.destroy();

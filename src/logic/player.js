@@ -19,7 +19,7 @@ export default function loadPlayer(life, asteroidDamage, scoreCounter) {
       pos(player.pos.x + 20, player.pos.y - 20),
       origin("botleft"),
       lifespan(0.5),
-      scale(1),
+      scale(1.8),
     ]);
     destroyAll("hp");
     loadPlayerHealth(life, player.hp());
