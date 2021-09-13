@@ -24,7 +24,7 @@ export default function loadPlayer(life, asteroidDamage, scoreCounter) {
     destroyAll("hp");
     loadPlayerHealth(life, player.hp());
 
-    shake(10);
+    shake(3);
     e.destroy();
     if (player.hp() <= 0) {
       go("end", scoreCounter);

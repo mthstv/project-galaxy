@@ -31,7 +31,7 @@ export default function loadBullet(player, playerShootSpeed, speed, damage) {
         ]);
 
         bullet.destroy();
-        shake(2);
+        shake(1);
       });
     }
   });
