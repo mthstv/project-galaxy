@@ -6,6 +6,7 @@ import loadPlayer from "../logic/player.js";
 import handlePlayerMovementAnimations from "../logic/handlers/player-movement.js";
 import loadBullet from "../logic/bullet.js";
 import loadPlayerHealth from "../logic/health.js";
+import loadPlayerSpecialMeter from "../logic/special.js";
 
 export function loadGameScene(currentLanguage) {
   scene("game", () => {
@@ -17,6 +18,7 @@ export function loadGameScene(currentLanguage) {
 
     const PLAYER_MOVE_SPEED = 400;
     const PLAYER_LIFE = 10;
+    const PLAYER_SPECIAL_LIMIT = 5;
     const ASTEROID_LIFE = 8;
     const BULLET_DAMAGE = 4;
     const ASTEROID_DAMAGE = 3;
@@ -33,8 +35,9 @@ export function loadGameScene(currentLanguage) {
     
     const player = loadPlayer(PLAYER_LIFE, ASTEROID_DAMAGE, scoreCounter);
     loadPlayerHealth(PLAYER_LIFE, PLAYER_LIFE);
-    
-    loadAsteroid(ASTEROID_LIFE, ASTEROID_SPEED, scoreCounter);
+    loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, 0);
+
+    loadAsteroid(player, ASTEROID_LIFE, ASTEROID_SPEED, scoreCounter, PLAYER_SPECIAL_LIMIT);
     handlePlayerMovementAnimations(player, PLAYER_MOVE_SPEED);
     loadBullet(player, playerShootSpeed, BULLET_SPEED, BULLET_DAMAGE);
   });

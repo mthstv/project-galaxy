@@ -43,8 +43,12 @@ export default function loadAssets() {
     },
   });
 
-  loadSprite("health-point-filled", "/assets/sprites/players/health/filled-spritesheet-7x12.png");
-  loadSprite("health-point-empty", "/assets/sprites/players/health/empty-spritesheet-7x12.png");
+  loadSprite("health-point-filled", "/assets/sprites/players/health/hp-filled-7x12.png");
+  loadSprite("health-point-empty", "/assets/sprites/players/health/hp-empty-7x12.png");
+  loadSprite("special-point-filled", "/assets/sprites/players/special/bar/sp-filled-12x6.png");
+  loadSprite("special-point-empty", "/assets/sprites/players/special/bar/sp-empty-12x6.png");
+
+  loadSprite("special-attack", "/assets/sprites/players/special/blue-special-spritesheet-32x160.png");
 
   loadSprite("asteroid", "/assets/sprites/enemies/asteroid-enemy-spritesheet-100x27.png", {
     sliceX: 5,

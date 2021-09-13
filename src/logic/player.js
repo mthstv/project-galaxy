@@ -3,12 +3,13 @@ import loadPlayerHealth from "../logic/health.js";
 export default function loadPlayer(life, asteroidDamage, scoreCounter) {
   const player = add([
     sprite("nav"),
-    pos(center()),
+    pos(center().x, height() - 100),
     scale(2),
     area({ scale: 0.7 }),
     origin("center"),
     health(life),
     "player",
+    { special: 0 }
   ]);
 
   player.play("idle", { loop: true });

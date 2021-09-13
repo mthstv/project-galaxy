@@ -1,4 +1,6 @@
-export default function loadAsteroid(life, speed, scoreCounter) {
+import loadPlayerSpecialMeter from "../logic/special.js";
+
+export default function loadAsteroid(player, life, speed, scoreCounter, specialLimit) {
   loop(0.5, () => {
     const asteroid = add([
       sprite("asteroid"),
@@ -26,6 +28,10 @@ export default function loadAsteroid(life, speed, scoreCounter) {
       a.destroy();
       scoreCounter.value += 1;
       scoreCounter.text = scoreCounter.value;
+
+      player.special += 1;
+      destroyAll("sp");
+      loadPlayerSpecialMeter(specialLimit, player.special);
     }
   });
 }
