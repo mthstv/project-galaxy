@@ -37,5 +37,8 @@ export function loadEndScene(currentLanguage) {
     keyPress("space", () => {
       go("menu", playerBest);
     });
+    mouseClick(() => {
+      go("menu", playerBest);
+    });
   });
 }
