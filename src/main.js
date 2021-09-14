@@ -5,23 +5,24 @@ import { loadGameScene } from "./scenes/game.js";
 import { loadEndScene } from "./scenes/end.js";
 import loadAssets from "./logic/assets.js";
 
-setTimeout(async () => {
-	kaboom({
-		global: true,
-		debug: true,
-		fullscreen: true,
-		scale: 1,
-		clearColor: [ 0, 0, 0, 1 ],
-		font: "sinko",
-	});
-	
-	loadAssets();
-	
-	const currentLanguage = await loadLanguage(window.navigator.language);
-	
-	loadGameScene(currentLanguage);
-	loadMenuScene(currentLanguage);
-	loadEndScene(currentLanguage);
-	
-	go("menu");
-}, 2000);
+kaboom({
+	global: true,
+	debug: true,
+	stretch: false,
+	letterbox: true,
+	scale: 1,
+	clearColor: [ 0, 0, 0, 1 ],
+	font: "sinko",
+});
+if (navigator.userAgentData.mobile) {
+	fullscreen();
+}
+loadAssets();
+
+const currentLanguage = await loadLanguage(window.navigator.language);
+
+loadGameScene(currentLanguage);
+loadMenuScene(currentLanguage);
+loadEndScene(currentLanguage);
+
+go("menu");
