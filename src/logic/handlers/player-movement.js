@@ -1,4 +1,6 @@
-export default function handlePlayerMovementAnimations(player, moveSpeed) {
+export default function handlePlayerMovementAnimations(moveSpeed) {
+  const player = get("player")[0];
+
   keyDown("up", () => {
     if (player.pos.y > 0) {
       player.move(0, -moveSpeed);
@@ -11,7 +13,19 @@ export default function handlePlayerMovementAnimations(player, moveSpeed) {
     }
   });
 
-  // Moving Left with animation 
+  keyDown("left", () => {
+    if (player.pos.x > 0) {
+      player.move(-moveSpeed, 0);
+    }
+  });
+
+  keyDown("right", () => {
+    if (player.pos.x < width()) {
+      player.move(moveSpeed, 0);
+    }
+  });
+
+  // animations 
   keyPress("left", () => {
     if (keyIsDown("x")) {
       player.play("leanedLeftShoot", { loop: true });
@@ -30,13 +44,7 @@ export default function handlePlayerMovementAnimations(player, moveSpeed) {
       player.play("idle", { loop: true });
     }
   });
-  keyDown("left", () => {
-    if (player.pos.x > 0) {
-      player.move(-moveSpeed, 0);
-    }
-  });
 
-  // Moving Right with animation 
   keyPress("right", () => {
     if (keyIsDown("x")) {
       player.play("leanedRightShoot", { loop: true });
@@ -53,11 +61,6 @@ export default function handlePlayerMovementAnimations(player, moveSpeed) {
       player.play("shoot", { loop: true });
     } else {
       player.play("idle", { loop: true });
-    }
-  });
-  keyDown("right", () => {
-    if (player.pos.x < width()) {
-      player.move(moveSpeed, 0);
     }
   });
 
@@ -79,21 +82,5 @@ export default function handlePlayerMovementAnimations(player, moveSpeed) {
     } else {
       player.play("idle", { loop: true });
     }
-  });
-
-  // MOUSE MOVEMENTS
-  let draggin = false;
-  player.clicks(() => {
-    draggin = true;
-  });
-
-  player.action(() => {
-    if (draggin) {
-      player.pos = mousePos();
-    }
-  })
-
-  mouseRelease(() => {
-    draggin = false;
   });
 }
