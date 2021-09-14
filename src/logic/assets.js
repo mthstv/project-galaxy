@@ -62,4 +62,7 @@ export default function loadAssets() {
   });
 
   loadSound("blip", "/assets/sounds/blip.mp3");
+
+  loadSprite("arrow-button", "/assets/sprites/buttons/arrow.png");
+  loadSprite("shoot-button", "/assets/sprites/buttons/shoot.png");
 }
