@@ -1,12 +1,13 @@
+import handlePlayerMovementAnimations from "../logic/handlers/player-movement.js";
 import loadTutorial from "../logic/tutorial.js";
 import loadUi from "../logic/ui.js";
 import loadBackgrounds from "../logic/background.js";
 import loadAsteroid from "../logic/asteroid.js";
 import loadPlayer from "../logic/player.js";
-import handlePlayerMovementAnimations from "../logic/handlers/player-movement.js";
 import loadBullet from "../logic/bullet.js";
 import loadPlayerHealth from "../logic/health.js";
 import loadPlayerSpecialMeter from "../logic/special.js";
+import loadButtonOverlay from "../logic/button-overlay.js";
 
 export function loadGameScene(currentLanguage) {
   scene("game", () => {
@@ -14,31 +15,44 @@ export function loadGameScene(currentLanguage) {
       "bg",
       "game",
       "ui",
+      "overlay",
     ], "game");
 
-    const PLAYER_MOVE_SPEED = 400;
+    // toggle fullscreen mode on "f"
+    keyPress("f", (c) => {
+      fullscreen(!fullscreen());
+    });
+
+    const PLAYER_MOVE_SPEED = 300;
     const PLAYER_LIFE = 10;
     const PLAYER_SPECIAL_LIMIT = 6;
     const ASTEROID_LIFE = 8;
     const BULLET_DAMAGE = 4;
     const ASTEROID_DAMAGE = 3;
-    const BULLET_SPEED = 500;
+    const BULLET_SPEED = 750;
     const BACKGROUND_SPEED = 80;
-    const ASTEROID_SPEED = 300;
+    const ASTEROID_SPEED = 400;
+    const INITIAL_PLAYER_SHOOT_SPEED = 0.3;
+    const SPECIAL_METER_GAIN_ON_KILL = 0.5;
 
     loadTutorial(currentLanguage);
   
-    let playerShootSpeed = 0.2;
     const scoreCounter = loadUi();
 
     loadBackgrounds(BACKGROUND_SPEED);
-    
-    const player = loadPlayer(PLAYER_LIFE, ASTEROID_DAMAGE, scoreCounter);
+
+    loadPlayer(PLAYER_LIFE, scoreCounter, INITIAL_PLAYER_SHOOT_SPEED);
+
     loadPlayerHealth(PLAYER_LIFE, PLAYER_LIFE);
     loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, 0);
 
-    loadAsteroid(player, ASTEROID_LIFE, ASTEROID_SPEED, scoreCounter, PLAYER_SPECIAL_LIMIT);
-    handlePlayerMovementAnimations(player, PLAYER_MOVE_SPEED);
-    loadBullet(player, playerShootSpeed, BULLET_SPEED, BULLET_DAMAGE);
+    let shootButton = undefined;
+    if (navigator.userAgentData.mobile) {
+      shootButton = loadButtonOverlay(PLAYER_MOVE_SPEED);
+    }
+
+    loadAsteroid(ASTEROID_DAMAGE, ASTEROID_LIFE, ASTEROID_SPEED, scoreCounter, PLAYER_SPECIAL_LIMIT, SPECIAL_METER_GAIN_ON_KILL);
+    handlePlayerMovementAnimations(PLAYER_MOVE_SPEED);
+    loadBullet(BULLET_SPEED, BULLET_DAMAGE, shootButton);
   });
 }
