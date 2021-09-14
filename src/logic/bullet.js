@@ -8,7 +8,7 @@ export default function loadBullet(player, playerShootSpeed, speed, damage) {
   });
 
   loop(playerShootSpeed, () => {
-    if (keyIsDown("x")) {
+    if (keyIsDown("x") || mouseIsDown()) {
       const bullet = add([
         sprite("bullet"),
         area({ scale: 0.8 }),

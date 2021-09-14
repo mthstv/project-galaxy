@@ -80,4 +80,20 @@ export default function handlePlayerMovementAnimations(player, moveSpeed) {
       player.play("idle", { loop: true });
     }
   });
+
+  // MOUSE MOVEMENTS
+  let draggin = false;
+  player.clicks(() => {
+    draggin = true;
+  });
+
+  player.action(() => {
+    if (draggin) {
+      player.pos = mousePos();
+    }
+  })
+
+  mouseRelease(() => {
+    draggin = false;
+  });
 }
