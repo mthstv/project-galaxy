@@ -84,5 +84,8 @@ export function loadMenuScene(currentLanguage) {
       setData("player-name", input.text);
       go("game");
     });
+    mouseClick(() => {
+      go("game");
+    });
   });
 }
