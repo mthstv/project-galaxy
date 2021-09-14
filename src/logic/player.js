@@ -1,6 +1,6 @@
 import loadPlayerHealth from "../logic/health.js";
 
-export default function loadPlayer(life, asteroidDamage, scoreCounter) {
+export default function loadPlayer(life, scoreCounter, shootSpeed) {
   const player = add([
     sprite("nav"),
     pos(center().x, height() - 100),
@@ -9,14 +9,14 @@ export default function loadPlayer(life, asteroidDamage, scoreCounter) {
     origin("center"),
     health(life),
     "player",
-    { special: 0 }
+    { special: 0, shootSpeed }
   ]);
 
   player.play("idle", { loop: true });
   player.collides("enemy", (e) => {
-    player.hurt(asteroidDamage);
+    player.hurt(e.damage);
     add([
-      text("-" + asteroidDamage),
+      text("-" + e.damage),
       pos(player.pos.x + 20, player.pos.y - 20),
       origin("botleft"),
       lifespan(0.5),
@@ -28,7 +28,11 @@ export default function loadPlayer(life, asteroidDamage, scoreCounter) {
     shake(3);
     e.destroy();
     if (player.hp() <= 0) {
-      go("end", scoreCounter);
+      player.destroy();
+      
+      wait(0.5, () => {
+        go("end", scoreCounter);
+      })
     }
   });
 
