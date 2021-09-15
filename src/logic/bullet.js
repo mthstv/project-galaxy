@@ -20,43 +20,45 @@ export default function loadBullet() {
       }
       if (player.lvl > 1) {
         add([
-          sprite("red-bullet"),
+          sprite("blue-bullet"),
           area({ scale: 0.8 }),
           origin("center"),
           pos(player.pos.x, player.pos.y - 20),
-          scale(1.8),
+          scale(0.8),
           "bullet",
           { damage: BULLET_DAMAGE / 2 }
         ]);
       }
 
       for(let n = 1; n < player.lvl; n++) {
-        add([
-          sprite("red-bullet"),
-          area({ scale: 0.8 }),
-          origin("center"),
-          pos(player.pos.x - (12 * n), player.pos.y + (5 * n)),
-          scale(1.5),
-          "bullet",
-          { damage: BULLET_DAMAGE / 4 }
-        ]);
-        add([
-          sprite("red-bullet"),
-          area({ scale: 0.8 }),
-          origin("center"),
-          pos(player.pos.x + (12 * n), player.pos.y + (5 * n)),
-          scale(1.5),
-          "bullet",
-          { damage: BULLET_DAMAGE / 4 }
-        ]);
-
-        if (n >= 6) {
+        if (n < 5) {
+          add([
+            sprite("red-bullet"),
+            area({ scale: 0.8 }),
+            origin("center"),
+            pos(player.pos.x - (12 * n), player.pos.y + (5 * n)),
+            scale(1.5),
+            "bullet",
+            { damage: BULLET_DAMAGE / 4 }
+          ]);
+          add([
+            sprite("red-bullet"),
+            area({ scale: 0.8 }),
+            origin("center"),
+            pos(player.pos.x + (12 * n), player.pos.y + (5 * n)),
+            scale(1.5),
+            "bullet",
+            { damage: BULLET_DAMAGE / 4 }
+          ]);
+        }
+        if (n >= 6 && n < 10) {
           add([
             sprite("purple-bullet"),
             area({ scale: 0.8 }),
             origin("center"),
             pos(player.pos.x - (12 * n), player.pos.y + (5 * n)),
             scale(1),
+            rotate(-10),
             "bullet",
             "diagonal-left",
             { damage: BULLET_DAMAGE / 4 }
@@ -67,6 +69,7 @@ export default function loadBullet() {
             origin("center"),
             pos(player.pos.x + (12 * n), player.pos.y + (5 * n)),
             scale(1),
+            rotate(10),
             "bullet",
             "diagonal-right",
             { damage: BULLET_DAMAGE / 4 }
