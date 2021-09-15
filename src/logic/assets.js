@@ -32,7 +32,8 @@ export default function loadAssets() {
       },
     },
   });
-  loadSprite("bullet", "/assets/sprites/bullets/blue-spritesheet-180x18.png", {
+
+  loadSprite("blue-bullet", "/assets/sprites/bullets/blue-spritesheet-180x18.png", {
     sliceX: 10,
     sliceY: 1,
     anims: {
@@ -42,6 +43,9 @@ export default function loadAssets() {
       },
     },
   });
+  loadSprite("purple-bullet", "/assets/sprites/bullets/purple-9x14.png");
+  loadSprite("red-bullet", "/assets/sprites/bullets/red-9x14.png");
+  loadSprite("yellow-bullet", "/assets/sprites/bullets/yellow-9x14.png");
 
   loadSprite("health-point-filled", "/assets/sprites/players/health/hp-filled-7x12.png");
   loadSprite("health-point-empty", "/assets/sprites/players/health/hp-empty-7x12.png");
