@@ -5,6 +5,6 @@ export default function loadTutorial(currentLanguage) {
     origin("center"),
     layer("ui"),
     scale(2),
-    lifespan(2),
+    lifespan(4),
   ]);
 }
