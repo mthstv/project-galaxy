@@ -4,14 +4,14 @@ import { loadMenuScene } from "./scenes/menu.js";
 import { loadGameScene } from "./scenes/game.js";
 import { loadEndScene } from "./scenes/end.js";
 import loadAssets from "./logic/assets.js";
-import { browserLanguage } from "./helpers/constants.js";
+import { browserLanguage, isMobile } from "./helpers/constants.js";
 
 kaboom({
 	global: true,
 	debug: true,
 	stretch: false,
 	letterbox: true,
-	scale: 1,
+	scale: isMobile ? 2 : 1,
 	clearColor: [ 0, 0, 0, 1 ],
 	font: "sinko",
 });
