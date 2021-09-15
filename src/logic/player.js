@@ -15,6 +15,8 @@ export default function loadPlayer(scoreCounter) {
       special: 0,
       shootSpeed: INITIAL_PLAYER_SHOOT_SPEED,
       lvl: 1,
+      dead: false,
+      isAlive: () => !player.dead,
       reloadMeters: () => {
         destroyAll("hp");
         loadPlayerHealthMeter(PLAYER_TOTAL_LIFE, player.hp());
@@ -40,6 +42,7 @@ export default function loadPlayer(scoreCounter) {
     shake(3);
     e.destroy();
     if (player.hp() <= 0) {
+      player.dead = true;
       player.destroy();
       
       wait(0.5, () => {
