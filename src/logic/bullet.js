@@ -1,4 +1,4 @@
-export default function loadBullet(speed, damage, shootButton) {
+export default function loadBullet(speed, damage) {
   const player = get("player")[0];
 
   action("bullet", (b) => {
@@ -9,20 +9,8 @@ export default function loadBullet(speed, damage, shootButton) {
     }
   });
 
-  let draggin = false;
-
-  if (shootButton) {
-    shootButton.clicks(() => {
-      draggin = true;
-    });
-    
-    mouseRelease((a) => {
-      draggin = false;
-    });
-  }
-
   loop(player.shootSpeed, () => {
-    if (keyIsDown("x") || draggin) {
+    if (keyIsDown("x") || mouseIsDown()) {
       const bullet = add([
         sprite("bullet"),
         area({ scale: 0.8 }),

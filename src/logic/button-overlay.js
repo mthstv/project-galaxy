@@ -1,35 +1,6 @@
 export default function loadButtonOverlay(speed) {
   const player = get("player")[0];
 
-  const shoot = add([
-    sprite("shoot-button"),
-    pos(60, height() - 200),
-    scale(8),
-    area(),
-    origin("center"),
-    layer("overlay"),
-  ]);
-
-  const moveRight = add([
-    sprite("arrow-button"),
-    pos(width() - 60, height() - 140),
-    scale(4),
-    area(),
-    origin("center"),
-    layer("overlay"),
-    rotate(270),
-  ]);
-
-  const moveLeft = add([
-    sprite("arrow-button"),
-    pos(width() - 180, height() - 140),
-    scale(4),
-    area(),
-    origin("center"),
-    layer("overlay"),
-    rotate(90),
-  ]);
-
   const moveUp = add([
     sprite("arrow-button"),
     pos(width() - 120, height() - 200),
@@ -38,6 +9,29 @@ export default function loadButtonOverlay(speed) {
     rotate(180),
     origin("center"),
     layer("overlay"),
+    "arrow",
+  ]);
+
+  const moveRight = add([
+    sprite("arrow-button"),
+    pos(width() - 60, height() - 140),
+    scale(4),
+    area(),
+    origin("center"),
+    rotate(270),
+    layer("overlay"),
+    "arrow",
+  ]);
+
+  const moveLeft = add([
+    sprite("arrow-button"),
+    pos(width() - 180, height() - 140),
+    scale(4),
+    area(),
+    origin("center"),
+    rotate(90),
+    layer("overlay"),
+    "arrow",
   ]);
 
   const moveDown = add([
@@ -47,61 +41,49 @@ export default function loadButtonOverlay(speed) {
     area(),
     origin("center"),
     layer("overlay"),
+    "arrow",
   ]);
 
+  let pointer = add([
+    sprite("pointer"),
+    pos(mousePos()),
+    scale(2),
+    area({ scale: 2 }),
+    origin("center"),
+    layer("overlay"),
+    "pointer",
+  ]);
 
-  // MOUSE MOVEMENTS
-  let movement = {
-    x: 0, 
-    y: 0
-  };
-
-  let movingRight = false;
-  moveRight.clicks(() => {
-    movingRight = true;
-    movement = { ...movement, x: movement.x + speed }
+  mouseDown((pos) => {
+    pointer.pos = pos;
   });
 
-  let movingLeft = false;
-  moveLeft.clicks(() => {
-    movingLeft = true;
-    movement = { ...movement, x: movement.x - speed }
-  });
-
-  let movingUp = false
-  moveUp.clicks(() => {
-    movingUp = true;
-    movement = { ...movement, y: movement.y - speed }
-  });
-
-  let movingDown = false
-  moveDown.clicks(() => {
-    movingDown = true;
-    movement = { ...movement, y: movement.y + speed }
-  });
-  
   mouseRelease(() => {
-    if (movingRight) {
-      movingRight = false;
-      movement = { ...movement, x: movement.x - speed }
-    }
-    if (movingLeft) {
-      movingLeft = false;
-      movement = { ...movement, x: movement.x + speed }
-    }
-    if (movingUp) {
-      movingUp = false;
-      movement = { ...movement, y: movement.y + speed }
-    }
-    if (movingDown) {
-      movingDown = false;
-      movement = { ...movement, y: movement.y - speed }
-    }
-  });
-
-  player.action(() => {
-    player.move(movement.x, movement.y);
+    pointer.pos.x = 0;
+    pointer.pos.y = 0;
   })
 
-  return shoot;
+  // MOUSE MOVEMENTS
+  pointer.action(() => {
+    if (pointer.isColliding(moveUp)) {
+      if (player.pos.y > 0) {
+        player.move(0, -speed);
+      }
+    }
+    if (pointer.isColliding(moveDown)) {
+      if (player.pos.y < height()) {
+        player.move(0, speed);
+      }
+    }
+    if (pointer.isColliding(moveLeft)) {
+      if (player.pos.x > 0) {
+        player.move(-speed, 0);
+      }
+    }
+    if (pointer.isColliding(moveRight)) {
+      if (player.pos.x < width()) {
+        player.move(speed, 0);
+      }
+    }
+  });
 }

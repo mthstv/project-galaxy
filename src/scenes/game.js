@@ -46,13 +46,12 @@ export function loadGameScene(currentLanguage) {
     loadPlayerHealth(PLAYER_LIFE, PLAYER_LIFE);
     loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, 0);
 
-    let shootButton = undefined;
     if (navigator.userAgentData.mobile) {
-      shootButton = loadButtonOverlay(PLAYER_MOVE_SPEED);
+      loadButtonOverlay(PLAYER_MOVE_SPEED);
     }
 
     loadAsteroid(ASTEROID_DAMAGE, ASTEROID_LIFE, ASTEROID_SPEED, scoreCounter, PLAYER_SPECIAL_LIMIT, SPECIAL_METER_GAIN_ON_KILL);
     handlePlayerMovementAnimations(PLAYER_MOVE_SPEED);
-    loadBullet(BULLET_SPEED, BULLET_DAMAGE, shootButton);
+    loadBullet(BULLET_SPEED, BULLET_DAMAGE);
   });
 }
