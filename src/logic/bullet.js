@@ -13,30 +13,17 @@ export default function loadBullet(speed, damage) {
 
   loop(player.shootSpeed, () => {
     if (keyIsDown("x") || (isMobile && mouseIsDown())) {
-      const bullet = add([
-        sprite("bullet"),
+      add([
+        sprite("bullet", {
+          anim: "fly",
+        }),
         area({ scale: 0.8 }),
         origin("center"),
         pos(player.pos.x, player.pos.y - 20),
         scale(1),
-        "bullet"
+        "bullet",
+        { damage }
       ]);
-
-      bullet.play("fly", { loop: true });
-      bullet.collides("asteroid", (a) => {
-        a.hurt(damage);
-
-        add([
-          text("-" + damage),
-          pos(a.pos),
-          origin("botleft"),
-          lifespan(0.5),
-          scale(1.2),
-        ]);
-
-        bullet.destroy();
-        shake(1);
-      });
     }
   });
 }

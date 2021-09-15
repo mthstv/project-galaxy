@@ -18,6 +18,20 @@ export default function loadAsteroid(damage, life, speed, scoreCounter, specialL
     ]);
     
     asteroid.play("fly", { loop: true });
+    asteroid.collides("bullet", (b) => {
+      asteroid.hurt(b.damage);
+
+      add([
+        text("-" + b.damage),
+        pos(asteroid.pos),
+        origin("botleft"),
+        lifespan(0.5),
+        scale(1.2),
+      ]);
+
+      b.destroy();
+      shake(1);
+    });
   });
 
   action("asteroid", (a) => {
