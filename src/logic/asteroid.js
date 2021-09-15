@@ -1,6 +1,11 @@
-import loadPlayerSpecialMeter from "../logic/special.js";
+import {
+  ASTEROID_DAMAGE,
+  ASTEROID_LIFE,
+  ASTEROID_SPEED,
+  SPECIAL_METER_GAIN_ON_KILL
+} from "../helpers/constants.js";
 
-export default function loadAsteroid(damage, life, speed, scoreCounter, specialLimit, specialMeterGain) {
+export default function loadAsteroid(scoreCounter) {
   const player = get("player")[0];
 
   loop(0.5, () => {
@@ -10,11 +15,11 @@ export default function loadAsteroid(damage, life, speed, scoreCounter, specialL
       scale(2),
       area({ scale: 1 }),
       origin("center"),
-      health(life),
+      health(ASTEROID_LIFE),
       rotate(rand(-30, 30)),
       "asteroid",
       "enemy",
-      { damage }
+      { damage: ASTEROID_DAMAGE }
     ]);
     
     asteroid.play("fly", { loop: true });
@@ -35,7 +40,7 @@ export default function loadAsteroid(damage, life, speed, scoreCounter, specialL
   });
 
   action("asteroid", (a) => {
-    a.move(a.angle * (-8), speed);
+    a.move(a.angle * (-8), ASTEROID_SPEED);
 
     if (a.pos.y > height()) {
       a.destroy();
@@ -46,9 +51,8 @@ export default function loadAsteroid(damage, life, speed, scoreCounter, specialL
       scoreCounter.value += 1;
       scoreCounter.text = scoreCounter.value;
 
-      player.special += specialMeterGain;
-      destroyAll("sp");
-      loadPlayerSpecialMeter(specialLimit, player.special);
+      player.special += SPECIAL_METER_GAIN_ON_KILL;
+      player.reloadMeters();
     }
   });
 }

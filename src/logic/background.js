@@ -1,4 +1,6 @@
-export default function loadBackgrounds(backgroundSpeed) {
+import { BACKGROUND_SPEED } from "../helpers/constants.js";
+
+export default function loadBackgrounds() {
   add([
     sprite("galaxy", { width: width(), height: height(), }),
     "bg",
@@ -15,7 +17,7 @@ export default function loadBackgrounds(backgroundSpeed) {
   ]);
 
   action("bg", (b) => {
-    b.move(0, backgroundSpeed);
+    b.move(0, BACKGROUND_SPEED);
     if (b.pos.y > height()) {
       b.destroy();
       if (b.is("bgaux")) {

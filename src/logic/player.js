@@ -1,15 +1,28 @@
-import loadPlayerHealth from "../logic/health.js";
+import { PLAYER_TOTAL_LIFE, INITIAL_PLAYER_SHOOT_SPEED, PLAYER_SPECIAL_LIMIT } from "../helpers/constants.js";
+import loadPlayerHealthMeter from "./health.js";
+import loadPlayerSpecialMeter from "./special.js";
 
-export default function loadPlayer(life, scoreCounter, shootSpeed) {
+export default function loadPlayer(scoreCounter) {
   const player = add([
     sprite("nav"),
     pos(center().x, height() - 100),
     scale(2),
     area({ scale: 0.7 }),
     origin("center"),
-    health(life),
+    health(PLAYER_TOTAL_LIFE),
     "player",
-    { special: 0, shootSpeed }
+    {
+      special: 0,
+      shootSpeed: INITIAL_PLAYER_SHOOT_SPEED,
+      lvl: 1,
+      reloadMeters: () => {
+        destroyAll("hp");
+        loadPlayerHealthMeter(PLAYER_TOTAL_LIFE, player.hp());
+
+        destroyAll("sp");
+        loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, player.special);
+      }
+    }
   ]);
 
   player.play("idle", { loop: true });
@@ -22,8 +35,7 @@ export default function loadPlayer(life, scoreCounter, shootSpeed) {
       lifespan(0.5),
       scale(1.8),
     ]);
-    destroyAll("hp");
-    loadPlayerHealth(life, player.hp());
+    player.reloadMeters();
 
     shake(3);
     e.destroy();
