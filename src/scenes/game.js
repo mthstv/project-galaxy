@@ -9,6 +9,19 @@ import loadPlayerHealth from "../logic/health.js";
 import loadPlayerSpecialMeter from "../logic/special.js";
 import loadButtonOverlay from "../logic/button-overlay.js";
 import { isMobile } from "../helpers/constants.js";
+import {
+  PLAYER_MOVE_SPEED,
+  PLAYER_LIFE,
+  PLAYER_SPECIAL_LIMIT,
+  ASTEROID_LIFE,
+  BULLET_DAMAGE,
+  ASTEROID_DAMAGE,
+  BULLET_SPEED,
+  BACKGROUND_SPEED,
+  ASTEROID_SPEED,
+  INITIAL_PLAYER_SHOOT_SPEED,
+  SPECIAL_METER_GAIN_ON_KILL,
+} from '../helpers/constants.js';
 
 export function loadGameScene(currentLanguage) {
   scene("game", () => {
@@ -18,18 +31,6 @@ export function loadGameScene(currentLanguage) {
       "ui",
       "overlay",
     ], "game");
-
-    const PLAYER_MOVE_SPEED = 300;
-    const PLAYER_LIFE = 10;
-    const PLAYER_SPECIAL_LIMIT = 6;
-    const ASTEROID_LIFE = 8;
-    const BULLET_DAMAGE = 4;
-    const ASTEROID_DAMAGE = 3;
-    const BULLET_SPEED = 750;
-    const BACKGROUND_SPEED = 80;
-    const ASTEROID_SPEED = 400;
-    const INITIAL_PLAYER_SHOOT_SPEED = 0.3;
-    const SPECIAL_METER_GAIN_ON_KILL = 0.5;
 
     loadTutorial(currentLanguage);
   
