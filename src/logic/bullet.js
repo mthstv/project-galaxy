@@ -1,3 +1,5 @@
+import { isMobile } from "../helpers/constants.js";
+
 export default function loadBullet(speed, damage) {
   const player = get("player")[0];
 
@@ -10,7 +12,7 @@ export default function loadBullet(speed, damage) {
   });
 
   loop(player.shootSpeed, () => {
-    if (keyIsDown("x") || mouseIsDown()) {
+    if (keyIsDown("x") || (isMobile && mouseIsDown())) {
       const bullet = add([
         sprite("bullet"),
         area({ scale: 0.8 }),

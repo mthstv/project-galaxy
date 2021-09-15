@@ -48,7 +48,7 @@ export default function loadButtonOverlay(speed) {
     sprite("pointer"),
     pos(mousePos()),
     scale(2),
-    area({ scale: 2 }),
+    area({ scale: 1.5 }),
     origin("center"),
     layer("overlay"),
     "pointer",

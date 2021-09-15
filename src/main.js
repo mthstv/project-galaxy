@@ -4,6 +4,7 @@ import { loadMenuScene } from "./scenes/menu.js";
 import { loadGameScene } from "./scenes/game.js";
 import { loadEndScene } from "./scenes/end.js";
 import loadAssets from "./logic/assets.js";
+import { browserLanguage } from "./helpers/constants.js";
 
 kaboom({
 	global: true,
@@ -14,12 +15,10 @@ kaboom({
 	clearColor: [ 0, 0, 0, 1 ],
 	font: "sinko",
 });
-if (navigator.userAgentData.mobile) {
-	fullscreen();
-}
+
 loadAssets();
 
-const currentLanguage = await loadLanguage(window.navigator.language);
+const currentLanguage = await loadLanguage(browserLanguage);
 
 loadGameScene(currentLanguage);
 loadMenuScene(currentLanguage);

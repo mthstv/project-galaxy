@@ -8,6 +8,7 @@ import loadBullet from "../logic/bullet.js";
 import loadPlayerHealth from "../logic/health.js";
 import loadPlayerSpecialMeter from "../logic/special.js";
 import loadButtonOverlay from "../logic/button-overlay.js";
+import { isMobile } from "../helpers/constants.js";
 
 export function loadGameScene(currentLanguage) {
   scene("game", () => {
@@ -17,11 +18,6 @@ export function loadGameScene(currentLanguage) {
       "ui",
       "overlay",
     ], "game");
-
-    // toggle fullscreen mode on "f"
-    keyPress("f", (c) => {
-      fullscreen(!fullscreen());
-    });
 
     const PLAYER_MOVE_SPEED = 300;
     const PLAYER_LIFE = 10;
@@ -46,7 +42,7 @@ export function loadGameScene(currentLanguage) {
     loadPlayerHealth(PLAYER_LIFE, PLAYER_LIFE);
     loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, 0);
 
-    if (navigator.userAgentData.mobile) {
+    if (isMobile) {
       loadButtonOverlay(PLAYER_MOVE_SPEED);
     }
 
