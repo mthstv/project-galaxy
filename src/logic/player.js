@@ -17,6 +17,8 @@ export default function loadPlayer(scoreCounter) {
       lvl: 1,
       dead: false,
       isAlive: () => !player.dead,
+      invincible: true,
+      isInvincible: () => player.invincible,
       reloadMeters: () => {
         destroyAll("hp");
         loadPlayerHealthMeter(PLAYER_TOTAL_LIFE, player.hp());
