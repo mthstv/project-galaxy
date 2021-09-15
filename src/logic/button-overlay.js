@@ -5,7 +5,7 @@ export default function loadButtonOverlay() {
 
   const moveUp = add([
     sprite("arrow-button"),
-    pos(width() - 120, height() - 200),
+    pos(center().x, height() - 300),
     scale(4),
     area(),
     rotate(180),
@@ -16,7 +16,7 @@ export default function loadButtonOverlay() {
 
   const moveRight = add([
     sprite("arrow-button"),
-    pos(width() - 60, height() - 140),
+    pos(center().x + 60, height() - 240),
     scale(4),
     area(),
     origin("center"),
@@ -27,7 +27,7 @@ export default function loadButtonOverlay() {
 
   const moveLeft = add([
     sprite("arrow-button"),
-    pos(width() - 180, height() - 140),
+    pos(center().x - 60, height() - 240),
     scale(4),
     area(),
     origin("center"),
@@ -38,7 +38,7 @@ export default function loadButtonOverlay() {
 
   const moveDown = add([
     sprite("arrow-button"),
-    pos(width() - 120, height() - 80),
+    pos(center().x, height() - 180),
     scale(4),
     area(),
     origin("center"),
