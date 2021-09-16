@@ -45,7 +45,7 @@ export default function loadAsteroid(scoreCounter) {
   action("asteroid", (a) => {
     a.move(a.angle * (-6), ASTEROID_SPEED / a.size);
 
-    if (a.pos.y > height()) {
+    if (a.pos.y > height() + 40 || a.pos.x > width() + 40 || a.pos.x < -40) {
       a.destroy();
     }
 
