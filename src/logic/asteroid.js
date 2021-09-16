@@ -4,6 +4,7 @@ import {
   ASTEROID_SPEED,
   SPECIAL_METER_GAIN_ON_KILL
 } from "../helpers/constants.js";
+import loadCounter from "./counter.js";
 
 export default function loadAsteroid(scoreCounter) {
   const player = get("player")[0];
@@ -28,14 +29,7 @@ export default function loadAsteroid(scoreCounter) {
     asteroid.play("fly", { loop: true });
     asteroid.collides("bullet", (b) => {
       asteroid.hurt(b.damage);
-
-      add([
-        text("-" + b.damage),
-        pos(asteroid.pos),
-        origin("botleft"),
-        lifespan(0.5),
-        scale(1.2),
-      ]);
+      loadCounter(b.damage, asteroid.pos);
 
       b.destroy();
       shake(1);

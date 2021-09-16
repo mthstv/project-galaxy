@@ -1,4 +1,5 @@
 import { PLAYER_TOTAL_LIFE, INITIAL_PLAYER_SHOOT_SPEED, PLAYER_SPECIAL_LIMIT } from "../helpers/constants.js";
+import loadCounter from "./counter.js";
 import loadPlayerHealthMeter from "./health.js";
 import loadPlayerSpecialMeter from "./special.js";
 
@@ -32,13 +33,8 @@ export default function loadPlayer(scoreCounter) {
   player.play("idle", { loop: true });
   player.collides("enemy", (e) => {
     player.hurt(e.damage);
-    add([
-      text("-" + e.damage),
-      pos(player.pos.x + 20, player.pos.y - 20),
-      origin("botleft"),
-      lifespan(0.5),
-      scale(1.8),
-    ]);
+    loadCounter(e.damage, player.pos, 1.8);
+
     player.reloadMeters();
 
     shake(3);
