@@ -5,33 +5,21 @@ export default function loadBullet() {
 
   loop(player.shootSpeed, () => {
     if (player.isAlive() && keyIsDown("x") || (isMobile && mouseIsDown())) {
-      if (player.lvl === 1) {
-        add([
-          sprite("blue-bullet", {
-            anim: "fly",
-          }),
-          area({ scale: 0.8 }),
-          origin("center"),
-          pos(player.pos.x, player.pos.y - 20),
-          scale(1),
-          "bullet",
-          { damage: BULLET_DAMAGE }
-        ]);
-      }
-      if (player.lvl > 1) {
-        add([
-          sprite("blue-bullet"),
-          area({ scale: 0.8 }),
-          origin("center"),
-          pos(player.pos.x, player.pos.y - 20),
-          scale(0.8),
-          "bullet",
-          { damage: BULLET_DAMAGE / 2 }
-        ]);
-      }
+      add([
+        sprite("blue-bullet", {
+          anim: "fly",
+        }),
+        area({ scale: 0.8 }),
+        origin("center"),
+        pos(player.pos.x, player.pos.y - 20),
+        scale(0.9),
+        "bullet",
+        { damage: player.lvl > 1 ? BULLET_DAMAGE / 2 : BULLET_DAMAGE },
+        color(127, 200, 255)
+      ]);
 
       for(let n = 1; n < player.lvl; n++) {
-        if (n < 5) {
+        if (n < 6) {
           add([
             sprite("red-bullet"),
             area({ scale: 0.8 }),
@@ -53,7 +41,7 @@ export default function loadBullet() {
         }
         if (n >= 6 && n < 10) {
           add([
-            sprite("purple-bullet"),
+            sprite("yellow-bullet"),
             area({ scale: 0.8 }),
             origin("center"),
             pos(player.pos.x - (12 * n), player.pos.y + (5 * n)),
@@ -64,7 +52,7 @@ export default function loadBullet() {
             { damage: BULLET_DAMAGE / 4 }
           ]);
           add([
-            sprite("purple-bullet"),
+            sprite("yellow-bullet"),
             area({ scale: 0.8 }),
             origin("center"),
             pos(player.pos.x + (12 * n), player.pos.y + (5 * n)),
