@@ -2,7 +2,7 @@ export default function loadAssets() {
   loadSprite("galaxy", "/assets/sprites/backgrounds/space-breelbo.jpg");
   loadSprite("galaxy2", "/assets/sprites/backgrounds/space-breelbo2.jpg");
   loadSprite("galaxy3", "/assets/sprites/backgrounds/space-breelbo3.jpg");
-  loadSprite("nav", "/assets/sprites/players/nav2-spritesheet-320x320.png", {
+  loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {
     sliceX: 10,
     sliceY: 10,
     anims: {
@@ -29,6 +29,17 @@ export default function loadAssets() {
       leanedLeftShoot: {
         from: 34,
         to: 37,
+      },
+    },
+  });
+
+  loadSprite("nav-dash", "/assets/sprites/players/nav-spritesheet-320x320.png", {
+    sliceX: 10,
+    sliceY: 10,
+    anims: {
+      dash: {
+        from: 40,
+        to: 42,
       },
     },
   });
