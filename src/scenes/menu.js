@@ -39,38 +39,38 @@ export function loadMenuScene(currentLanguage) {
     ]);
 
     add([
-      text('pixel arts by @m4ths_dev and @breelbo', 8),
+      text('pixel arts by @m4ths_dev and @breelbo'),
       pos(width(), height() - 10),
       origin("right"),
       layer("ui"),
       scale(1),
     ]);
 
-    const nameLabel = add([
-      text(currentLanguage.nameInput),
-      pos(0, 0),
-      origin("topleft"),
-      layer("ui"),
-      scale(2),
-    ]);
+    // const nameLabel = add([
+    //   text(currentLanguage.nameInput),
+    //   pos(0, 0),
+    //   origin("topleft"),
+    //   layer("ui"),
+    //   scale(2),
+    // ]);
 
-    const input = add([
-      text(playerName),
-      pos(nameLabel.width * 2, 0),
-      origin("topleft"),
-      layer("ui"),
-      scale(2),
-    ]);
+    // const input = add([
+    //   text(playerName),
+    //   pos(nameLabel.width * 2, 0),
+    //   origin("topleft"),
+    //   layer("ui"),
+    //   scale(2),
+    // ]);
   
-    charInput((ch) => {
-      if (ch !== " ") {
-        input.text += ch;
-      }
-    });
+    // charInput((ch) => {
+    //   if (ch !== " ") {
+    //     input.text += ch;
+    //   }
+    // });
 
-    keyPressRep("backspace", () => {
-      input.text = input.text.substring(0, input.text.length - 1);
-    });
+    // keyPressRep("backspace", () => {
+    //   input.text = input.text.substring(0, input.text.length - 1);
+    // });
 
     add([
       text(currentLanguage.personalBest + playerBest),
@@ -81,7 +81,7 @@ export function loadMenuScene(currentLanguage) {
     ]);
 
     keyPress("space", () => {
-      setData("player-name", input.text);
+      // setData("player-name", input.text);
       go("game");
     });
     mouseClick(() => {
