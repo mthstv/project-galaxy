@@ -4,7 +4,7 @@ export default function loadBullet() {
   const player = get("player")[0];
 
   loop(player.shootSpeed, () => {
-    if (player.isAlive() && keyIsDown("x") || (isMobile && mouseIsDown())) {
+    if (player.isAlive() && keyIsDown("x") || isMobile) {
       add([
         sprite("blue-bullet", {
           anim: "fly",
