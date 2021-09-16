@@ -6,16 +6,13 @@ export default function loadBullet() {
   loop(player.shootSpeed, () => {
     if (player.isAlive() && keyIsDown("x") || isMobile) {
       add([
-        sprite("blue-bullet", {
-          anim: "fly",
-        }),
+        sprite("red-bullet"),
         area({ scale: 0.8 }),
         origin("center"),
         pos(player.pos.x, player.pos.y - 20),
-        scale(0.9),
+        scale(1.5),
         "bullet",
-        { damage: player.lvl > 1 ? BULLET_DAMAGE / 2 : BULLET_DAMAGE },
-        color(127, 200, 255)
+        { damage: player.lvl > 1 ? BULLET_DAMAGE / 2 : BULLET_DAMAGE }
       ]);
 
       for(let n = 1; n < player.lvl; n++) {
