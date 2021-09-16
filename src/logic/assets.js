@@ -2,7 +2,7 @@ export default function loadAssets() {
   loadSprite("galaxy", "/assets/sprites/backgrounds/space-breelbo.jpg");
   loadSprite("galaxy2", "/assets/sprites/backgrounds/space-breelbo2.jpg");
   loadSprite("galaxy3", "/assets/sprites/backgrounds/space-breelbo3.jpg");
-  loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {
+  loadSprite("nav", "/assets/sprites/players/nav-new-spritesheet-320x320.png", {
     sliceX: 10,
     sliceY: 10,
     anims: {
@@ -33,13 +33,13 @@ export default function loadAssets() {
     },
   });
 
-  loadSprite("nav-dash", "/assets/sprites/players/nav-spritesheet-320x320.png", {
+  loadSprite("nav-dash", "/assets/sprites/players/nav-new-spritesheet-320x320.png", {
     sliceX: 10,
     sliceY: 10,
     anims: {
       dash: {
         from: 40,
-        to: 42,
+        to: 43,
       },
     },
   });
@@ -58,12 +58,10 @@ export default function loadAssets() {
   loadSprite("red-bullet", "/assets/sprites/bullets/red-9x14.png");
   loadSprite("yellow-bullet", "/assets/sprites/bullets/yellow-9x14.png");
 
-  loadSprite("health-point-filled", "/assets/sprites/players/health/hp-filled-7x12.png");
-  loadSprite("health-point-empty", "/assets/sprites/players/health/hp-empty-7x12.png");
-  loadSprite("special-point-filled", "/assets/sprites/players/special/bar/sp-filled-12x6.png");
-  loadSprite("special-point-empty", "/assets/sprites/players/special/bar/sp-empty-12x6.png");
-
-  loadSprite("special-attack", "/assets/sprites/players/special/blue-special-spritesheet-32x160.png");
+  loadSprite("health-point-filled", "/assets/sprites/players/meters/health/hp-filled-7x12.png");
+  loadSprite("health-point-empty", "/assets/sprites/players/meters/health/hp-empty-7x12.png");
+  loadSprite("special-point-filled", "/assets/sprites/players/meters/special/sp-filled-12x6.png");
+  loadSprite("special-point-empty", "/assets/sprites/players/meters/special/sp-empty-12x6.png");
 
   loadSprite("asteroid", "/assets/sprites/enemies/asteroid-enemy-spritesheet-100x27.png", {
     sliceX: 5,
