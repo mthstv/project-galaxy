@@ -10,11 +10,13 @@ import loadPlayerSpecialMeter from "../logic/special.js";
 import loadButtonOverlay from "../logic/button-overlay.js";
 import { isMobile } from "../helpers/constants.js";
 import loadBulletSpeed from "../logic/bullet-speed.js";
+import loadDodge from "../logic/dodge.js";
 
 export function loadGameScene(currentLanguage) {
   scene("game", () => {
     layers([
       "bg",
+      "shadow",
       "game",
       "ui",
       "overlay",
@@ -39,5 +41,6 @@ export function loadGameScene(currentLanguage) {
     handlePlayerMovementAnimations();
     loadBullet();
     loadBulletSpeed();
+    loadDodge();
   });
 }

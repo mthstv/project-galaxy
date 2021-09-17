@@ -8,7 +8,7 @@ export default function loadPlayer(scoreCounter) {
     sprite("nav"),
     pos(center().x, height() - 100),
     scale(2),
-    area({ scale: 0.7 }),
+    area({ scale: 0.6 }),
     origin("center"),
     health(PLAYER_TOTAL_LIFE),
     "player",
@@ -18,7 +18,7 @@ export default function loadPlayer(scoreCounter) {
       lvl: 1,
       dead: false,
       isAlive: () => !player.dead,
-      invincible: true,
+      invincible: false,
       isInvincible: () => player.invincible,
       reloadMeters: () => {
         destroyAll("hp");
