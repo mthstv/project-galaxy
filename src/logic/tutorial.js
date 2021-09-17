@@ -1,11 +1,19 @@
 export default function loadTutorial(currentLanguage) {
   add([
-    text(currentLanguage.tutorial),
+    text(currentLanguage.tutorialMovement),
+    pos(center().x, center().y - 140),
+    origin("center"),
+    layer("ui"),
+    scale(2),
+    lifespan(5),
+  ]);
+  add([
+    text(currentLanguage.tutorialShooting),
     pos(center().x, center().y - 80),
     origin("center"),
     layer("ui"),
     scale(2),
-    lifespan(4),
+    lifespan(5),
   ]);
   add([
     text(currentLanguage.tutorialDodge),
@@ -13,6 +21,6 @@ export default function loadTutorial(currentLanguage) {
     origin("center"),
     layer("ui"),
     scale(2),
-    lifespan(4),
+    lifespan(5),
   ]);
 }

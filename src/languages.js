@@ -1,5 +1,6 @@
 export const pt = {
-  "tutorial": "Use as setas para navegar e X para atirar",
+  "tutorialMovement": "Use as setas para navegar",
+  "tutorialShooting": "Mantenha pressionado X para atirar",
   "tutorialDodge": "Pressione Z para desviar",
   "title": "Project Galaxy",
   "subtitle": "Aperte Espaco para comecar",
@@ -12,7 +13,8 @@ export const pt = {
 }
 
 export const en = {
-  "tutorial": "Use directional keys to navigate and X to shoot",
+  "tutorialMovement": "Use directional keys to navigate",
+  "tutorialShooting": "Hold down X to shoot",
   "tutorialDodge": "Press Z to dodge attacks",
   "title": "Project Galaxy",
   "subtitle": "Press Space to start",
