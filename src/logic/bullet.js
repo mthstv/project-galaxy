@@ -1,4 +1,4 @@
-import { isMobile, BULLET_DAMAGE } from "../helpers/constants.js";
+import { isMobile, BULLET_DAMAGE, PLAYER_MAX_LVL } from "../helpers/constants.js";
 
 export default function loadBullet() {
   const player = get("player")[0];
@@ -9,8 +9,8 @@ export default function loadBullet() {
         sprite("red-bullet"),
         area({ scale: 0.8 }),
         origin("center"),
-        pos(player.pos.x, player.pos.y - 20),
-        scale(1.5),
+        pos(player.pos.x, player.pos.y - 18),
+        scale(1.8),
         "bullet",
         { damage: player.lvl > 1 ? BULLET_DAMAGE / 2 : BULLET_DAMAGE }
       ]);
@@ -21,7 +21,7 @@ export default function loadBullet() {
             sprite("red-bullet"),
             area({ scale: 0.8 }),
             origin("center"),
-            pos(player.pos.x - (12 * n), player.pos.y + (5 * n)),
+            pos(player.pos.x - (12 * n), player.pos.y + (4 * n)),
             scale(1.5),
             "bullet",
             { damage: BULLET_DAMAGE / 4 }
@@ -30,18 +30,18 @@ export default function loadBullet() {
             sprite("red-bullet"),
             area({ scale: 0.8 }),
             origin("center"),
-            pos(player.pos.x + (12 * n), player.pos.y + (5 * n)),
+            pos(player.pos.x + (12 * n), player.pos.y + (4 * n)),
             scale(1.5),
             "bullet",
             { damage: BULLET_DAMAGE / 4 }
           ]);
         }
-        if (n >= 6 && n < 10) {
+        if (n >= 6 && n <= PLAYER_MAX_LVL) {
           add([
             sprite("yellow-bullet"),
             area({ scale: 0.8 }),
             origin("center"),
-            pos(player.pos.x - (12 * n), player.pos.y + (5 * n)),
+            pos(player.pos.x - (12 * n), player.pos.y + (4 * n)),
             scale(1),
             rotate(-10),
             "bullet",
@@ -52,7 +52,7 @@ export default function loadBullet() {
             sprite("yellow-bullet"),
             area({ scale: 0.8 }),
             origin("center"),
-            pos(player.pos.x + (12 * n), player.pos.y + (5 * n)),
+            pos(player.pos.x + (12 * n), player.pos.y + (4 * n)),
             scale(1),
             rotate(10),
             "bullet",
