@@ -2,6 +2,7 @@ import {
   ASTEROID_DAMAGE,
   ASTEROID_LIFE,
   ASTEROID_SPEED,
+  PLAYER_MAX_LVL,
   SPECIAL_METER_GAIN_ON_KILL
 } from "../helpers/constants.js";
 import loadCounter from "./counter.js";
@@ -32,8 +33,11 @@ export default function loadAsteroid(scoreCounter) {
       loadCounter(b.damage, asteroid.pos);
 
       b.destroy();
-      shake(1);
     });
+    // asteroid.collides("asteroid", (a) => {
+    //   a.destroy();
+    //   asteroid.destroy();
+    // });
   });
 
   action("asteroid", (a) => {
@@ -48,7 +52,9 @@ export default function loadAsteroid(scoreCounter) {
       scoreCounter.value += (1 * a.size);
       scoreCounter.text = scoreCounter.value;
 
-      player.special += SPECIAL_METER_GAIN_ON_KILL;
+      if (player.lvl < PLAYER_MAX_LVL) {
+        player.special += SPECIAL_METER_GAIN_ON_KILL;
+      }
       player.reloadMeters();
     }
   });
