@@ -1,29 +1,27 @@
-import { PLAYER_MOVE_SPEED } from "../../helpers/constants.js";
-
 export default function handlePlayerMovementAnimations() {
   const player = get("player")[0];
 
   keyDown("up", () => {
     if (player.pos.y > 0) {
-      player.move(0, -PLAYER_MOVE_SPEED);
+      player.move(0, -player.moveSpeed);
     }
   });
 
   keyDown("down", () => {
     if (player.pos.y < height()) {
-      player.move(0, PLAYER_MOVE_SPEED);
+      player.move(0, player.moveSpeed);
     }
   });
 
   keyDown("left", () => {
     if (player.pos.x > 0) {
-      player.move(-PLAYER_MOVE_SPEED, 0);
+      player.move(-player.moveSpeed, 0);
     }
   });
 
   keyDown("right", () => {
     if (player.pos.x < width()) {
-      player.move(PLAYER_MOVE_SPEED, 0);
+      player.move(player.moveSpeed, 0);
     }
   });
 

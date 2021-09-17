@@ -1,4 +1,4 @@
-import { PLAYER_TOTAL_LIFE, INITIAL_PLAYER_SHOOT_SPEED, PLAYER_SPECIAL_LIMIT } from "../helpers/constants.js";
+import { PLAYER_TOTAL_LIFE, INITIAL_PLAYER_SHOOT_SPEED, PLAYER_SPECIAL_LIMIT, INITIAL_PLAYER_MOVE_SPEED } from "../helpers/constants.js";
 import loadCounter from "./counter.js";
 import loadPlayerHealthMeter from "./health.js";
 import loadPlayerSpecialMeter from "./special.js";
@@ -15,6 +15,7 @@ export default function loadPlayer(scoreCounter) {
     {
       special: 0,
       shootSpeed: INITIAL_PLAYER_SHOOT_SPEED,
+      moveSpeed: INITIAL_PLAYER_MOVE_SPEED,
       lvl: 1,
       dead: false,
       isAlive: () => !player.dead,
@@ -32,6 +33,10 @@ export default function loadPlayer(scoreCounter) {
 
   player.play("idle", { loop: true });
   player.collides("enemy", (e) => {
+    // add action to check if is colliding
+    if (player.isInvincible()) {
+      return;
+    }
     player.hurt(e.damage);
     loadCounter(e.damage, player.pos, 1.8);
 
@@ -39,6 +44,9 @@ export default function loadPlayer(scoreCounter) {
 
     shake(3);
     e.destroy();
+  });
+
+  player.action(() => {
     if (player.hp() <= 0) {
       player.dead = true;
       player.destroy();
@@ -47,7 +55,7 @@ export default function loadPlayer(scoreCounter) {
         go("end", scoreCounter);
       })
     }
-  });
+  })
 
   return player;
 }

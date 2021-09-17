@@ -1,5 +1,3 @@
-import { PLAYER_MOVE_SPEED } from "../helpers/constants.js";
-
 export default function loadButtonOverlay() {
   const player = get("player")[0];
 
@@ -69,22 +67,22 @@ export default function loadButtonOverlay() {
   pointer.action(() => {
     if (pointer.isColliding(moveUp)) {
       if (player.pos.y > 0) {
-        player.move(0, -PLAYER_MOVE_SPEED);
+        player.move(0, -player.moveSpeed);
       }
     }
     if (pointer.isColliding(moveDown)) {
       if (player.pos.y < height()) {
-        player.move(0, PLAYER_MOVE_SPEED);
+        player.move(0, player.moveSpeed);
       }
     }
     if (pointer.isColliding(moveLeft)) {
       if (player.pos.x > 0) {
-        player.move(-PLAYER_MOVE_SPEED, 0);
+        player.move(-player.moveSpeed, 0);
       }
     }
     if (pointer.isColliding(moveRight)) {
       if (player.pos.x < width()) {
-        player.move(PLAYER_MOVE_SPEED, 0);
+        player.move(player.moveSpeed, 0);
       }
     }
   });

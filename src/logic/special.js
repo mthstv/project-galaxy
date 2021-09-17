@@ -26,7 +26,7 @@ export default function loadPlayerSpecialMeter(specialLimit = PLAYER_SPECIAL_LIM
     ]);
   }
 
-  if (player.lvl === PLAYER_MAX_LVL) {
+  if (player && player.lvl === PLAYER_MAX_LVL) {
     add([
       text("MAX LVL"),
       pos(26, height() - 38),

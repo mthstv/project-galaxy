@@ -34,6 +34,17 @@ export default function loadAsteroid(scoreCounter) {
 
       b.destroy();
     });
+    player.action(() => {
+      if (player.isColliding(asteroid) && !player.isInvincible()) {
+        player.hurt(asteroid.damage);
+        loadCounter(asteroid.damage, player.pos, 1.8);
+    
+        player.reloadMeters();
+    
+        shake(3);
+        asteroid.destroy();
+      }
+    });
     // asteroid.collides("asteroid", (a) => {
     //   a.destroy();
     //   asteroid.destroy();

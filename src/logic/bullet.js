@@ -4,7 +4,7 @@ export default function loadBullet() {
   const player = get("player")[0];
 
   loop(player.shootSpeed, () => {
-    if (player.isAlive() && keyIsDown("x") || isMobile) {
+    if (player.isAlive() && !player.isInvincible() && keyIsDown("x") || isMobile) {
       add([
         sprite("red-bullet"),
         area({ scale: 0.8 }),
