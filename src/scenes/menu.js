@@ -1,6 +1,6 @@
 export function loadMenuScene(currentLanguage) {
   scene("menu", () => {
-    let playerName = getData("player-name", "") || "";
+    // let playerName = getData("player-name", "") || "";
     let playerBest = getData("player-best", 0) || 0;
 
     layers([
