@@ -1,5 +1,5 @@
 export const isMobile = navigator.userAgentData.mobile;
-export const browserLanguage = window.navigator.language;
+export const browserLanguage = navigator.language;
 
 export const INITIAL_PLAYER_MOVE_SPEED = 300;
 export const PLAYER_TOTAL_LIFE = 10;
