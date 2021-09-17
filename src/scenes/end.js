@@ -1,4 +1,7 @@
 export function loadEndScene(currentLanguage) {
+  const bgWidth = width() > 1280 ? width() : 1280;
+  const bgHeight = height() > 720 ? height() : 720;
+
   scene("end", (playerScore) => {
     let playerBest = getData("player-best", 0) || 0;
 
@@ -13,7 +16,7 @@ export function loadEndScene(currentLanguage) {
     ], "end");
   
     add([
-      sprite("galaxy3", { width: width(), height: height(), }),
+      sprite("galaxy3", { width: bgWidth, height: bgHeight, }),
       pos(0, 0),
       layer("bg"),
     ]);

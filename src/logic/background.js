@@ -1,15 +1,17 @@
 import { BACKGROUND_SPEED } from "../helpers/constants.js";
 
 export default function loadBackgrounds() {
+  const bgWidth = width() > 1280 ? width() : 1280;
+  const bgHeight = height() > 720 ? height() : 720;
   add([
-    sprite("galaxy", { width: width(), height: height(), }),
+    sprite("galaxy", { width: bgWidth, height: bgHeight, }),
     "bg",
     pos(0, 0),
     layer("bg"),
   ]);
 
   add([
-    sprite("galaxy2", { width: width(), height: height(), }),
+    sprite("galaxy2", { width: bgWidth, height: bgHeight, }),
     "bg",
     "bgaux",
     pos(0, -height()),
@@ -22,7 +24,7 @@ export default function loadBackgrounds() {
       b.destroy();
       if (b.is("bgaux")) {
         add([
-          sprite("galaxy2", { width: width(), height: height(), }),
+          sprite("galaxy2", { width: bgWidth, height: bgHeight, }),
           "bg",
           "bgaux",
           pos(0, -height()),
@@ -30,7 +32,7 @@ export default function loadBackgrounds() {
         ]);
       } else {
         add([
-          sprite("galaxy", { width: width(), height: height(), }),
+          sprite("galaxy", { width: bgWidth, height: bgHeight, }),
           "bg",
           pos(0, -height()),
           layer("bg"),
