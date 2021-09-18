@@ -10,7 +10,7 @@ export default function loadBulletSpeed() {
       b.move(0, -BULLET_SPEED);
     }
 
-    if (b.pos.y < -height()) {
+    if (b.pos.y < 0) {
       b.destroy();
     }
   });
