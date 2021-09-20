@@ -8,22 +8,23 @@ export default function loadDodge() {
     player.invincible = true;
     player.moveSpeed = player.moveSpeed * 1.8;
     let n = 0;
-    loop(0.05, () => {
-      if (player.isInvincible() && n < 10) {
+    loop(0.08, () => {
+      if (player.isInvincible() && n < 6) {
         const dash = add([
           sprite("nav-dash"),
           pos(player.pos),
           layer("shadow"),
           scale(2),
           origin("center"),
-          lifespan(0.5),
+          lifespan(0.3),
+          opacity(0.7),
           "dash"
         ]);
         dash.play("dash", { loop: true, speed: 8 });
         n++;
       }
     });
-    wait(0.5, () => {
+    wait(0.4, () => {
       player.invincible = false;
       player.moveSpeed = player.moveSpeed / 1.8;
     });
