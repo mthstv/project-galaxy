@@ -10,8 +10,8 @@ export default function loadDodge() {
     let n = 0;
     loop(0.05, () => {
       if (player.isInvincible() && n < 10) {
-        add([
-          sprite("nav-dash", { anim: "dash", }),
+        const dash = add([
+          sprite("nav-dash"),
           pos(player.pos),
           layer("shadow"),
           scale(2),
@@ -19,6 +19,7 @@ export default function loadDodge() {
           lifespan(0.5),
           "dash"
         ]);
+        dash.play("dash", { loop: true, speed: 8 });
         n++;
       }
     });

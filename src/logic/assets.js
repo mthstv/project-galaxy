@@ -37,10 +37,7 @@ export default function loadAssets() {
     sliceX: 10,
     sliceY: 10,
     anims: {
-      dash: {
-        from: 40,
-        to: 43,
-      },
+      dash: { from: 40, to: 43 },
     },
   });
 
