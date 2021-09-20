@@ -6,6 +6,7 @@ export const pt = {
   "subtitle": "Aperte Espaco para comecar",
   "nameInput": "Seu nome: ",
   "personalBest": "Melhor pontuacao: ",
+  "playerSelect": "Seleção de nave",
   "battleReport": {
     "title": "FIM DA BATALHA",
     "asteroids": "Asteroides destruidos: "
@@ -20,6 +21,7 @@ export const en = {
   "subtitle": "Press Space to start",
   "nameInput": "Your name: ",
   "personalBest": "Personal Best: ",
+  "playerSelect": "Select Starship",
   "battleReport": {
     "title": "BATTLE REPORT",
     "asteroids": "Asteroids destroyed: "
