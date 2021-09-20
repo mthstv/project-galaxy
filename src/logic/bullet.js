@@ -24,7 +24,7 @@ export default function loadBullet() {
             pos(player.pos.x - (12 * n), player.pos.y + (4 * n)),
             scale(1.5),
             "bullet",
-            { damage: BULLET_DAMAGE / 4 }
+            { damage: BULLET_DAMAGE / 2 }
           ]);
           add([
             sprite("red-bullet"),
@@ -33,7 +33,7 @@ export default function loadBullet() {
             pos(player.pos.x + (12 * n), player.pos.y + (4 * n)),
             scale(1.5),
             "bullet",
-            { damage: BULLET_DAMAGE / 4 }
+            { damage: BULLET_DAMAGE / 2 }
           ]);
         }
         if (n >= 6 && n <= PLAYER_MAX_LVL) {

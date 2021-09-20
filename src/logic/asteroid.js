@@ -10,7 +10,7 @@ import loadCounter from "./counter.js";
 export default function loadAsteroid(scoreCounter) {
   const player = get("player")[0];
 
-  loop(0.5, () => {
+  loop(0.2, () => {
     const size = rand(20, 50) / 10;
     const asteroid = add([
       sprite("asteroid"),
@@ -18,12 +18,12 @@ export default function loadAsteroid(scoreCounter) {
       scale(size),
       area({ scale: 0.8 }),
       origin("center"),
-      health(Math.round(ASTEROID_LIFE * (size))),
+      health(Math.round((ASTEROID_LIFE * size) * (player.lvl / 4))),
       rotate(rand(-30, 30)),
       "asteroid",
       "enemy",
       {
-        damage: Math.round(ASTEROID_DAMAGE * (size)),
+        damage: Math.round(ASTEROID_DAMAGE * size),
         size: Math.round(size)
       }
     ]);
@@ -49,10 +49,17 @@ export default function loadAsteroid(scoreCounter) {
     //   a.destroy();
     //   asteroid.destroy();
     // });
+    // console.log("--------------------------");
+    // console.log("Health: ", asteroid.hp());
+    // console.log("Speed: ", (ASTEROID_SPEED / asteroid.size));
+    // console.log("PlayerLVL: ", player.lvl);
+    // console.log("Adaptative variable: ", 1 + ((player.lvl / 10) / 2));
+    // console.log("Adaptative speed: ", (ASTEROID_SPEED / asteroid.size) * (1 + ((player.lvl / 10) / 2)));
+    // console.log("--------------------------");
   });
 
   action("asteroid", (a) => {
-    a.move(a.angle * (-6), ASTEROID_SPEED / a.size);
+    a.move(a.angle * (-6) * (1 + (player.lvl / 10)), (ASTEROID_SPEED / a.size) * (1 + (player.lvl / 10)));
 
     if (a.pos.y > height() + 40 || a.pos.x > width() + 40 || a.pos.x < -40) {
       a.destroy();
