@@ -5,9 +5,10 @@ import {
 } from "../helpers/constants.js";
 import loadCounter from "./counter.js";
 
-export default function loadAsteroidSpawn(asteroidSpawnRate = 0.3) {
+export default function loadAsteroidSpawn(asteroidSpawnRate = 0.5) {
   const player = get("player")[0];
-  loop(asteroidSpawnRate, () => {
+
+  const canceller = loop(asteroidSpawnRate, () => {
     if (player.backgroundProgression < BOSS_SPAWN_BACKGROUND_LIMIT) {
       const size = rand(20, 50) / 10;
       const asteroid = add([
@@ -56,4 +57,6 @@ export default function loadAsteroidSpawn(asteroidSpawnRate = 0.3) {
       // console.log("--------------------------");
     }
   });
+
+  return canceller;
 }

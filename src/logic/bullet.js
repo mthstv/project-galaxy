@@ -3,7 +3,7 @@ import { isMobile, BULLET_DAMAGE, PLAYER_MAX_LVL } from "../helpers/constants.js
 export default function loadBullet() {
   const player = get("player")[0];
 
-  loop(player.shootSpeed, () => {
+  const canceller = loop(player.shootSpeed, () => {
     if (player.isAlive() && !player.isInvincible() && keyIsDown("x") || isMobile) {
       add([
         sprite("red-bullet"),
@@ -85,4 +85,5 @@ export default function loadBullet() {
       }
     }
   });
+  return canceller;
 }

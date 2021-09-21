@@ -38,10 +38,10 @@ export function loadGameScene(currentLanguage) {
       loadButtonOverlay();
     }
 
-    loadAsteroidSpawn();
+    const asteroidSpawnCanceller = loadAsteroidSpawn();
     loadAsteroidMovement(scoreCounter);
     handlePlayerMovementAnimations();
-    loadBullet();
+    const bulletSpawnCanceller = loadBullet();
     loadBulletSpeed();
     loadDodge();
   });
