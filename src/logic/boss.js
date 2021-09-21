@@ -4,7 +4,7 @@ import loadCounter from "./counter.js";
 export default function loadBoss() {
   const player = get("player")[0];
 
-  if (player.backgroundProgression >= BOSS_SPAWN_BACKGROUND_LIMIT) {
+  if (player && player.backgroundProgression >= BOSS_SPAWN_BACKGROUND_LIMIT) {
     wait(2, () => {
       const boss = add([
         sprite("doom"),

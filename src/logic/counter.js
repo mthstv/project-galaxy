@@ -6,7 +6,7 @@ export default function loadCounter(n, position, customScale, isHeal = false) {
       origin("botleft"),
       lifespan(0.5),
       scale(customScale || 1.2),
-      color(0, 255, 0)
+      color(0, 198, 255)
     ]);
   } else {
     add([

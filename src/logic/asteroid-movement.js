@@ -3,6 +3,7 @@ import {
   PLAYER_MAX_LVL,
   SPECIAL_METER_GAIN_ON_KILL
 } from "../helpers/constants.js";
+import loadCounter from "./counter.js";
 
 export default function loadAsteroidMovement(scoreCounter) {
   const player = get("player")[0];
@@ -17,6 +18,7 @@ export default function loadAsteroidMovement(scoreCounter) {
       a.destroy();
       scoreCounter.value += (1 * a.size);
       scoreCounter.text = scoreCounter.value;
+      loadCounter(1, player.pos, null, true);
 
       if (player.lvl < PLAYER_MAX_LVL) {
         player.special += SPECIAL_METER_GAIN_ON_KILL;

@@ -9,7 +9,7 @@ export default function loadAsteroidSpawn(asteroidSpawnRate = 0.5) {
   const player = get("player")[0];
 
   const canceller = loop(asteroidSpawnRate, () => {
-    if (player.backgroundProgression < BOSS_SPAWN_BACKGROUND_LIMIT) {
+    if (player && player.backgroundProgression < BOSS_SPAWN_BACKGROUND_LIMIT) {
       const size = rand(20, 50) / 10;
       const asteroid = add([
         sprite("asteroid"),
