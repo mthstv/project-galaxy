@@ -27,7 +27,8 @@ export default function loadPlayer(scoreCounter) {
 
         destroyAll("sp");
         loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, player.special);
-      }
+      },
+      backgroundProgression: 0,
     }
   ]);
 
