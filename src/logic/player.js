@@ -44,7 +44,9 @@ export default function loadPlayer(scoreCounter) {
     player.reloadMeters();
 
     shake(3);
-    e.destroy();
+    if (e.is("asteroid")) {
+      e.destroy();
+    }
   });
 
   player.action(() => {

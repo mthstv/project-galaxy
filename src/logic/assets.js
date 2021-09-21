@@ -72,6 +72,7 @@ export default function loadAssets() {
     },
   });
 
+  loadSprite("doom", "/assets/sprites/enemies/doom-enemy-spritesheet-32x32.png");
 
   loadSprite("blue-bullet", "/assets/sprites/bullets/blue-spritesheet-180x18.png", {
     sliceX: 10,
