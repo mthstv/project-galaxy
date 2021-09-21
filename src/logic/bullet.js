@@ -12,10 +12,32 @@ export default function loadBullet() {
         pos(player.pos.x, player.pos.y - 18),
         scale(1.8),
         "bullet",
-        { damage: player.lvl > 1 ? BULLET_DAMAGE / 2 : BULLET_DAMAGE }
+        { damage: player.lvl > 1 && player.lvl <= 3 ? BULLET_DAMAGE / 2 : BULLET_DAMAGE }
       ]);
 
       for(let n = 1; n < player.lvl; n++) {
+        if (n % 2 === 0) {
+          wait(0.05, () => {
+            add([
+              sprite("purple-bullet"),
+              area({ scale: 0.8 }),
+              origin("center"),
+              pos(player.pos.x - (6 * n), player.pos.y + (2 * n)),
+              scale(0.8),
+              "bullet",
+              { damage: BULLET_DAMAGE / 4 }
+            ]);
+            add([
+              sprite("purple-bullet"),
+              area({ scale: 0.8 }),
+              origin("center"),
+              pos(player.pos.x + (6 * n), player.pos.y + (2 * n)),
+              scale(0.8),
+              "bullet",
+              { damage: BULLET_DAMAGE / 4 }
+            ]);
+          })
+        }
         if (n < 6) {
           add([
             sprite("red-bullet"),
