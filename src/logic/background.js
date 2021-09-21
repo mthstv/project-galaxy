@@ -24,7 +24,6 @@ export default function loadBackgrounds() {
     if (b.pos.y > height()) {
       b.destroy();
       player.backgroundProgression++;
-      console.log(player.backgroundProgression);
       if (b.is("bgaux")) {
         add([
           sprite("galaxy2", { width: bgWidth, height: bgHeight, }),
