@@ -1,5 +1,3 @@
-# Project Galaxy
-
 <div align="center">
 
 ```
@@ -12,6 +10,8 @@ __________             ________           _____    ___________      ______
 ```
 
 </div>
+
+#
 
 A shoot-em-up game developed using [Kaboomjs](https://kaboomjs.com/). Just for fun :D
 
