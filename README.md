@@ -1,4 +1,18 @@
 # Project Galaxy
+
+<div align="center">
+
+```
+________             ________           _____   _________      ______                      
+___  __ \__________________(_)____________  /_  __  ____/_____ ___  /_____ ____  ______  __
+__  /_/ /_  ___/  __ \____  /_  _ \  ___/  __/  _  / __ _  __ `/_  /_  __ `/_  |/_/_  / / /
+_  ____/_  /   / /_/ /___  / /  __/ /__ / /_    / /_/ / / /_/ /_  / / /_/ /__>  < _  /_/ / 
+/_/     /_/    \____/___  /  \___/\___/ \__/    \____/  \__,_/ /_/  \__,_/ /_/|_| _\__, /  
+                     /___/                                                        /____/   
+```
+
+</div>
+
 A shoot-em-up game developed using [Kaboomjs](https://kaboomjs.com/). Just for fun :D
 
 Some pixel arts are done by me and some are by [breelbo](https://www.instagram.com/breelbo/).
