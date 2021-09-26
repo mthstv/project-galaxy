@@ -16,7 +16,7 @@ export function loadEndScene(currentLanguage) {
     ], "end");
   
     add([
-      sprite("galaxy3", { width: bgWidth, height: bgHeight, }),
+      sprite("galaxy", { width: bgWidth, height: bgHeight, }),
       pos(0, 0),
       layer("bg"),
     ]);

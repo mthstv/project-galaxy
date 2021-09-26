@@ -12,7 +12,7 @@ export function loadMenuScene(currentLanguage) {
     ], "menu");
 
     add([
-      sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "one" }),
+      sprite("galaxy-stars", { width: bgWidth, height: bgHeight}),
       pos(0, 0),
       layer("bg"),
     ]);

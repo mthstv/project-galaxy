@@ -16,6 +16,8 @@ export default function loadAssets() {
       },
     },
   });
+  loadSprite("galaxy-new-full", "/assets/sprites/backgrounds/BGPJG1.png");
+  loadSprite("galaxy-stars", "/assets/sprites/backgrounds/BGPJG01.png");
 
   loadSprite("nav", "/assets/sprites/players/nav-new-spritesheet-320x320.png", {
     sliceX: 10,
