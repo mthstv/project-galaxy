@@ -2,6 +2,21 @@ export default function loadAssets() {
   loadSprite("galaxy", "/assets/sprites/backgrounds/space-breelbo.jpg");
   loadSprite("galaxy2", "/assets/sprites/backgrounds/space-breelbo2.jpg");
   loadSprite("galaxy3", "/assets/sprites/backgrounds/space-breelbo3.jpg");
+  loadSprite("galaxy-new", "/assets/sprites/backgrounds/BGPJG4.png", {
+    sliceX: 1,
+    sliceY: 2,
+    anims: {
+      one: {
+        from: 0,
+        to: 0,
+      },
+      two: {
+        from: 1,
+        to: 1,
+      },
+    },
+  });
+
   loadSprite("nav", "/assets/sprites/players/nav-new-spritesheet-320x320.png", {
     sliceX: 10,
     sliceY: 10,

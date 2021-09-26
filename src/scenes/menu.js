@@ -12,11 +12,11 @@ export function loadMenuScene(currentLanguage) {
     ], "menu");
 
     add([
-      sprite("galaxy3", { width: bgWidth, height: bgHeight, }),
+      sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "one" }),
       pos(0, 0),
       layer("bg"),
     ]);
-  
+
     add([
       text(currentLanguage.title),
       pos(center()),
