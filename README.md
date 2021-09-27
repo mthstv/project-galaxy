@@ -29,10 +29,8 @@ The game is hosted on Vercel, check it out here!
 ## Credits
 ### Sounds
 - "Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
-- "8-bit Explosion2.wav" by timgormly of Freesound.org
-- "electric woosh" by HadaHector of Freesound.org
+- "8-bit Explosion2.aif" by timgormly of Freesound.org | Audio file converted to mp3
+- "Jet_Bypassing.wav" by MATRIXXX_ of Freesound.org
 - "Coin insert or collecting item" by ProjectsU012 of Freesound.org
-
-The only changes made on the sound files were conversion to .mp3.
 
 License: https://creativecommons.org/licenses/by/3.0/legalcode

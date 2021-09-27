@@ -5,7 +5,7 @@ export default function loadBullet() {
 
   const canceller = loop(player.shootSpeed, () => {
     if (player.isAlive() && !player.isInvincible() && keyIsDown("x") || isMobile) {
-      play("shoot", { volume: 0.05 });
+      play("shoot", { volume: 0.1 });
       add([
         sprite("red-bullet"),
         area({ scale: 0.8 }),

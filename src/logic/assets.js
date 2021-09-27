@@ -121,12 +121,12 @@ export default function loadAssets() {
     },
   });
 
-  loadSound("hit", "/assets/sounds/128971_deadpoetsocietyband_bass-drum.mp3");
-  loadSound("explosion", "/assets/sounds/170144_timgormly_8-bit-explosion2.mp3");
-  loadSound("hurt", "/assets/sounds/448226_inspectorj_explosion-8-bit-01.mp3");
-  loadSound("dash", "/assets/sounds/446383__hadahector__electric-woosh.mp3");
-  loadSound("shoot", "/assets/sounds/277218_thedweebman_8-bit-laser.mp3");
-  loadSound("upgrade", "/assets/sounds/341629_projectsu012_coin-insert-or-collecting-item.mp3");
+  loadSound("hit", "/assets/sounds/128971__deadpoetsocietyband__bass-drum.wav");
+  loadSound("explosion", "/assets/sounds/170144__timgormly__8-bit-explosion2.mp3");
+  loadSound("hurt", "/assets/sounds/448226__inspectorj__explosion-8-bit-01.wav");
+  loadSound("dash", "/assets/sounds/444855__matrixxx__jet-bypassing.wav");
+  loadSound("shoot", "/assets/sounds/277218__thedweebman__8-bit-laser.wav");
+  loadSound("upgrade", "/assets/sounds/341629__projectsu012__coin-insert-or-collecting-item.wav");
 
   loadSprite("arrow-button", "/assets/sprites/buttons/arrow.png");
   loadSprite("pointer", "/assets/sprites/buttons/pointer.png");
