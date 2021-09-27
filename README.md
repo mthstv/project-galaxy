@@ -27,7 +27,7 @@ The game is hosted on Vercel, check it out here!
 > https://project-galaxy.vercel.app/
 
 ## Credits
-# Sounds
+### Sounds
 - "Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
 - "8-bit Explosion2.wav" by timgormly of Freesound.org
 - "electric woosh" by HadaHector of Freesound.org
