@@ -1,4 +1,7 @@
-export default function loadCounter(n, position, customScale, isHeal = false) {
+export default function loadCounter(n, position, customScale, isHeal = false, sound = null) {
+  if (sound) {
+    play(`${sound}`, { volume: 0.2 });
+  }
   if (isHeal) {
     add([
       text("+" + n),

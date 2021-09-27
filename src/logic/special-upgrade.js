@@ -14,4 +14,5 @@ export default function loadSpecialUpgrade(player) {
     player.heal(1);
   }
   player.reloadMeters();
+  play("upgrade");
 }

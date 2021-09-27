@@ -16,6 +16,8 @@ kaboom({
 	font: "sinko",
 });
 
+volume(0.1);
+
 loadAssets();
 
 const currentLanguage = await loadLanguage(browserLanguage);

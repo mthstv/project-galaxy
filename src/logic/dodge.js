@@ -5,6 +5,7 @@ export default function loadDodge() {
     if (!player.isAlive()) {
       return;
     }
+    play("dash");
     player.invincible = true;
     player.moveSpeed = player.moveSpeed * 1.8;
     let n = 0;

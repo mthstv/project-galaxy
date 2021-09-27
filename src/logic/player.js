@@ -34,12 +34,11 @@ export default function loadPlayer(scoreCounter) {
 
   player.play("idle", { loop: true });
   player.collides("enemy", (e) => {
-    // add action to check if is colliding
     if (player.isInvincible()) {
       return;
     }
     player.hurt(e.damage);
-    loadCounter(e.damage, player.pos, 1.8);
+    loadCounter(e.damage, player.pos, 1.8, false, "hurt");
 
     player.reloadMeters();
 

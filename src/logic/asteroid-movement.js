@@ -18,7 +18,7 @@ export default function loadAsteroidMovement(scoreCounter) {
       a.destroy();
       scoreCounter.value += (1 * a.size);
       scoreCounter.text = scoreCounter.value;
-      loadCounter(1, player.pos, null, true);
+      loadCounter(1, player.pos, null, true, "explosion");
 
       if (player.lvl < PLAYER_MAX_LVL) {
         player.special += SPECIAL_METER_GAIN_ON_KILL;

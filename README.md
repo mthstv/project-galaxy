@@ -25,3 +25,14 @@ Some pixel arts are done by me and some are by [breelbo](https://www.instagram.c
 ## Hosting
 The game is hosted on Vercel, check it out here!
 > https://project-galaxy.vercel.app/
+
+## Credits
+# Sounds
+- "Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+- "8-bit Explosion2.wav" by timgormly of Freesound.org
+- "electric woosh" by HadaHector of Freesound.org
+- "Coin insert or collecting item" by ProjectsU012 of Freesound.org
+
+The only changes made on the sound files were conversion to .mp3.
+
+License: https://creativecommons.org/licenses/by/3.0/legalcode
