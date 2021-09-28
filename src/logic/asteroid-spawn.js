@@ -30,7 +30,7 @@ export default function loadAsteroidSpawn(asteroidSpawnRate = 0.5) {
       asteroid.collides("bullet", (b) => {
         asteroid.hurt(b.damage);
         loadCounter(b.damage, asteroid.pos);
-
+        play("hit", { volume: 0.05 })
         b.destroy();
       });
       player.action(() => {

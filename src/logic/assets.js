@@ -2,17 +2,17 @@ export default function loadAssets() {
   loadSprite("galaxy", "/assets/sprites/backgrounds/space-breelbo.jpg");
   loadSprite("galaxy2", "/assets/sprites/backgrounds/space-breelbo2.jpg");
   loadSprite("galaxy3", "/assets/sprites/backgrounds/space-breelbo3.jpg");
-  loadSprite("galaxy-new", "/assets/sprites/backgrounds/BGPJG1.png", {
+  loadSprite("galaxy-new", "/assets/sprites/backgrounds/BGPJG1-flipped.png", {
     sliceX: 1,
     sliceY: 2,
     anims: {
       one: {
-        from: 0,
-        to: 0,
-      },
-      two: {
         from: 1,
         to: 1,
+      },
+      two: {
+        from: 0,
+        to: 0,
       },
     },
   });

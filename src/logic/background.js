@@ -16,7 +16,7 @@ export default function loadBackgrounds() {
     sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "one" }),
     "bg",
     "bgaux",
-    pos(0, -height()),
+    pos(0, -height() + 2),
     layer("bg"),
   ]);
 
@@ -31,14 +31,14 @@ export default function loadBackgrounds() {
           sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "one" }),
           "bg",
           "bgaux",
-          pos(0, -height() + 2),
+          pos(0, -height() + 4),
           layer("bg"),
         ]);
       } else {
         add([
           sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "two" }),
           "bg",
-          pos(0, -height() + 2),
+          pos(0, -height() + 4),
           layer("bg"),
         ]);
       }
