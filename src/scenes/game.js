@@ -12,6 +12,7 @@ import { isMobile } from "../helpers/constants.js";
 import loadBulletSpeed from "../logic/bullet-speed.js";
 import loadDodge from "../logic/dodge.js";
 import loadAsteroidMovement from "../logic/asteroid-movement.js";
+import loadCollisions from "../logic/collision.js";
 
 export function loadGameScene(currentLanguage) {
   scene("game", () => {
@@ -44,5 +45,6 @@ export function loadGameScene(currentLanguage) {
     const bulletSpawnCanceller = loadBullet();
     loadBulletSpeed();
     loadDodge();
+    loadCollisions();
   });
 }

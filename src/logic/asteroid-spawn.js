@@ -27,12 +27,6 @@ export default function loadAsteroidSpawn(asteroidSpawnRate = 0.5) {
         }
       ]);
       asteroid.play("fly", { loop: true });
-      asteroid.collides("bullet", (b) => {
-        asteroid.hurt(b.damage);
-        loadCounter(b.damage, asteroid.pos);
-        play("hit", { volume: 0.05 })
-        b.destroy();
-      });
       player.action(() => {
         if (player.isColliding(asteroid) && !player.isInvincible()) {
           player.hurt(asteroid.damage);
@@ -44,17 +38,6 @@ export default function loadAsteroidSpawn(asteroidSpawnRate = 0.5) {
           asteroid.destroy();
         }
       });
-      // asteroid.collides("asteroid", (a) => {
-      //   a.destroy();
-      //   asteroid.destroy();
-      // });
-      // console.log("--------------------------");
-      // console.log("Health: ", asteroid.hp());
-      // console.log("Speed: ", (ASTEROID_SPEED / asteroid.size));
-      // console.log("PlayerLVL: ", player.lvl);
-      // console.log("Adaptative variable: ", 1 + ((player.lvl / 10) / 2));
-      // console.log("Adaptative speed: ", (ASTEROID_SPEED / asteroid.size) * (1 + ((player.lvl / 10) / 2)));
-      // console.log("--------------------------");
     }
   });
 

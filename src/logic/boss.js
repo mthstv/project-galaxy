@@ -15,15 +15,9 @@ export default function loadBoss() {
         health(4000),
         layer("game"),
         "enemy",
+        "boss",
         { damage: 5 }
       ]);
-
-      boss.collides("bullet", (b) => {
-        boss.hurt(b.damage);
-        loadCounter(b.damage, boss.pos);
-
-        b.destroy();
-      });
     });
   }
 }

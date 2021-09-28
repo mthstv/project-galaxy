@@ -34,20 +34,6 @@ export default function loadPlayer(scoreCounter) {
   ]);
 
   player.play("idle", { loop: true });
-  player.collides("enemy", (e) => {
-    if (player.isInvincible()) {
-      return;
-    }
-    player.hurt(e.damage);
-    loadCounter(e.damage, player.pos, 1.8, false, "hurt");
-
-    player.reloadMeters();
-
-    shake(3);
-    if (e.is("asteroid")) {
-      e.destroy();
-    }
-  });
 
   player.action(() => {
     if (player.hp() <= 0) {
