@@ -6,14 +6,14 @@ export default function loadBackgrounds() {
   const bgWidth = width() > 1280 ? width() : 1280;
   const bgHeight = height() > 720 ? height() : 720;
   add([
-    sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "two" }),
+    sprite("galaxy1", { width: bgWidth, height: bgHeight }),
     "bg",
     pos(0, 0),
     layer("bg"),
   ]);
 
   add([
-    sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "one" }),
+    sprite("galaxy2", { width: bgWidth, height: bgHeight }),
     "bg",
     "bgaux",
     pos(0, -height() + 2),
@@ -28,7 +28,7 @@ export default function loadBackgrounds() {
       loadBoss();
       if (b.is("bgaux")) {
         add([
-          sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "one" }),
+          sprite("galaxy2", { width: bgWidth, height: bgHeight }),
           "bg",
           "bgaux",
           pos(0, -height() + 4),
@@ -36,7 +36,7 @@ export default function loadBackgrounds() {
         ]);
       } else {
         add([
-          sprite("galaxy-new", { width: bgWidth, height: bgHeight, anim: "two" }),
+          sprite("galaxy1", { width: bgWidth, height: bgHeight }),
           "bg",
           pos(0, -height() + 4),
           layer("bg"),

@@ -29,6 +29,7 @@ export default function loadPlayer(scoreCounter) {
         loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, player.special);
       },
       backgroundProgression: 0,
+      asteroidsDestroyed: 0,
     }
   ]);
 
@@ -50,11 +51,12 @@ export default function loadPlayer(scoreCounter) {
 
   player.action(() => {
     if (player.hp() <= 0) {
+      const asteroidsDestroyed = player.asteroidsDestroyed;
       player.dead = true;
       player.destroy();
       
       wait(0.5, () => {
-        go("end", scoreCounter);
+        go("end", scoreCounter, asteroidsDestroyed);
       })
     }
   })

@@ -9,7 +9,8 @@ export const pt = {
   "playerSelect": "Seleção de nave",
   "battleReport": {
     "title": "FIM DA BATALHA",
-    "asteroids": "Asteroides destruidos: "
+    "asteroids": "Asteroides destruidos: ",
+    "total": "Total de pontos: ",
   }
 }
 
@@ -24,7 +25,8 @@ export const en = {
   "playerSelect": "Select Starship",
   "battleReport": {
     "title": "BATTLE REPORT",
-    "asteroids": "Asteroids destroyed: "
+    "asteroids": "Asteroids destroyed: ",
+    "total": "Total points: ",
   }
 }
 
