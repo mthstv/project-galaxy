@@ -4,7 +4,6 @@ export default function loadAssets() {
   loadSprite("galaxy-stars", "/assets/sprites/backgrounds/BGPJG3.png");
   loadSprite("space", "/assets/sprites/backgrounds/space-breelbo.jpg");
 
-
   loadSprite("nav", "/assets/sprites/players/nav-new-spritesheet-320x320.png", {
     sliceX: 10,
     sliceY: 10,
@@ -76,6 +75,7 @@ export default function loadAssets() {
   });
 
   loadSprite("doom", "/assets/sprites/enemies/doom-enemy-spritesheet-32x32.png");
+  loadSprite("enemy-bullet", "/assets/sprites/bullets/enemy-bullet.png");
 
   loadSprite("blue-bullet", "/assets/sprites/bullets/blue-spritesheet-180x18.png", {
     sliceX: 10,

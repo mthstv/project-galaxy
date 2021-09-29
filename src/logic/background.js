@@ -1,7 +1,7 @@
 import { BACKGROUND_SPEED } from "../helpers/constants.js";
 import loadBoss from "./boss.js";
 
-export default function loadBackgrounds() {
+export default function loadBackgrounds(scoreCounter) {
   const player = get("player")[0];
   const bgWidth = width() > 1280 ? width() : 1280;
   const bgHeight = height() > 720 ? height() : 720;
@@ -25,7 +25,7 @@ export default function loadBackgrounds() {
     if (b.pos.y > height()) {
       b.destroy();
       player.backgroundProgression++;
-      loadBoss();
+      loadBoss(scoreCounter);
       if (b.is("bgaux")) {
         add([
           sprite("galaxy2", { width: bgWidth, height: bgHeight }),

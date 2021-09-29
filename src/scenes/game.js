@@ -30,7 +30,7 @@ export function loadGameScene(currentLanguage) {
 
     loadPlayer(scoreCounter);
 
-    loadBackgrounds();
+    loadBackgrounds(scoreCounter);
 
     loadPlayerHealthMeter();
     loadPlayerSpecialMeter();

@@ -13,4 +13,4 @@ export const BACKGROUND_SPEED = 80;
 export const ASTEROID_SPEED = 800;
 export const INITIAL_PLAYER_SHOOT_SPEED = 0.3;
 export const SPECIAL_METER_GAIN_ON_KILL = 1;
-export const BOSS_SPAWN_BACKGROUND_LIMIT = 15;
+export const BOSS_SPAWN_BACKGROUND_LIMIT = 20;

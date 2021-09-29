@@ -1,10 +1,12 @@
 import loadCounter from "./counter.js";
 
 export default function loadCollisions() {
-  collides("enemy", "bullet", (a, b) => {
-    a.hurt(b.damage);
-    loadCounter(b.damage, a.pos);
-    play("hit", { volume: 0.05 })
+  collides("enemy", "bullet", (e, b) => {
+    if (!e.is("healthless")) {
+      e.hurt(b.damage);
+      loadCounter(b.damage, e.pos);
+      play("hit", { volume: 0.05 })
+    }
     b.destroy();
   });
 
@@ -18,7 +20,7 @@ export default function loadCollisions() {
     p.reloadMeters();
 
     shake(3);
-    if (e.is("asteroid")) {
+    if (!e.is("boss")) {
       e.destroy();
     }
   });
