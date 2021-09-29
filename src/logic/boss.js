@@ -12,7 +12,7 @@ export default function loadBoss(scoreCounter) {
         area({ scale: 0.8 }),
         scale(7),
         origin("center"),
-        health(400),
+        health(1800),
         layer("game"),
         "enemy",
         "boss",
@@ -26,13 +26,13 @@ export default function loadBoss(scoreCounter) {
             origin("center"),
             pos(boss.pos.x, boss.pos.y + 40),
             scale(2),
-            health(8),
             "enemy-bullet",
             "enemy",
+            "healthless",
             {
               damage: 4,
-              ySpeed: 20 * (n / 2),
-              xSpeed: (6 - n) * 20
+              ySpeed: 50 * (n / 3),
+              xSpeed: (6 - n) * 30
             }
           ]);
         }
@@ -43,13 +43,13 @@ export default function loadBoss(scoreCounter) {
             origin("center"),
             pos(boss.pos.x, boss.pos.y + 40),
             scale(2),
-            health(8),
             "enemy-bullet",
             "enemy",
+            "healthless",
             {
               damage: 4,
-              ySpeed: 20 * (n / 2),
-              xSpeed: (6 - n) * -20
+              ySpeed: 50 * (n / 3),
+              xSpeed: (6 - n) * -30
             }
           ]);
         }
@@ -67,7 +67,7 @@ export default function loadBoss(scoreCounter) {
     action("enemy-bullet", (b) => {
       b.move(b.xSpeed, b.ySpeed);
 
-      if (b.pos.y > height() || b.hp() <= 0 || b.pos.x < 0 || b.pos.x > width()) {
+      if (b.pos.y > height() || (!b.is("healthless") && b.hp() <= 0) || b.pos.x < 0 || b.pos.x > width()) {
         b.destroy();
       }
     });
