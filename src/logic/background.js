@@ -8,6 +8,7 @@ export default function loadBackgrounds(scoreCounter) {
   add([
     sprite("galaxy1", { width: bgWidth, height: bgHeight }),
     "bg",
+    "first",
     pos(0, 0),
     layer("bg"),
   ]);
@@ -15,8 +16,8 @@ export default function loadBackgrounds(scoreCounter) {
   add([
     sprite("galaxy2", { width: bgWidth, height: bgHeight }),
     "bg",
-    "bgaux",
-    pos(0, -height() + 2),
+    "second",
+    pos(0, -height()),
     layer("bg"),
   ]);
 
@@ -26,19 +27,22 @@ export default function loadBackgrounds(scoreCounter) {
       b.destroy();
       player.backgroundProgression++;
       loadBoss(scoreCounter);
-      if (b.is("bgaux")) {
+
+      if (b.is("first")) {
         add([
-          sprite("galaxy2", { width: bgWidth, height: bgHeight }),
+          sprite("galaxy1", { width: bgWidth, height: bgHeight + 2 }),
           "bg",
-          "bgaux",
-          pos(0, -height() + 4),
+          "first",
+          pos(0, -height()),
           layer("bg"),
         ]);
-      } else {
+      }
+      if (b.is("second")) {
         add([
-          sprite("galaxy1", { width: bgWidth, height: bgHeight }),
+          sprite("galaxy2", { width: bgWidth, height: bgHeight + 2 }),
           "bg",
-          pos(0, -height() + 4),
+          "second",
+          pos(0, -height()),
           layer("bg"),
         ]);
       }

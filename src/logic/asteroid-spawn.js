@@ -5,7 +5,7 @@ import {
 } from "../helpers/constants.js";
 import loadCounter from "./counter.js";
 
-export default function loadAsteroidSpawn(asteroidSpawnRate = 0.5) {
+export default function loadAsteroidSpawn(asteroidSpawnRate = 0.4) {
   const player = get("player")[0];
 
   const canceller = loop(asteroidSpawnRate, () => {

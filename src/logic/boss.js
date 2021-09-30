@@ -1,5 +1,66 @@
 import { BOSS_SPAWN_BACKGROUND_LIMIT } from "../helpers/constants.js";
 
+function loadBossShootingPattern(boss, player) {
+  const canceller = loop(1.5, () => {
+    for(let n = 1; n <= 6; n++) {
+      add([
+        sprite("enemy-bullet"),
+        area({ scale: 0.3 }),
+        origin("center"),
+        pos(boss.pos.x, boss.pos.y + 40),
+        scale(2),
+        "enemy-bullet",
+        "enemy",
+        "healthless",
+        {
+          damage: 4,
+          ySpeed: 50 * (n / 3),
+          xSpeed: (6 - n) * 30
+        }
+      ]);
+    }
+    for(let n = 1; n <= 6; n++) {
+      add([
+        sprite("enemy-bullet"),
+        area({ scale: 0.3 }),
+        origin("center"),
+        pos(boss.pos.x, boss.pos.y + 40),
+        scale(2),
+        "enemy-bullet",
+        "enemy",
+        "healthless",
+        {
+          damage: 4,
+          ySpeed: 50 * (n / 3),
+          xSpeed: (6 - n) * -30
+        }
+      ]);
+    }
+    const follower = add([
+      sprite("enemy-bullet"),
+      area({ scale: 0.3 }),
+      origin("center"),
+      pos(boss.pos.x, boss.pos.y + 40),
+      scale(2),
+      "enemy",
+      "healthless",
+      color(161, 83, 239),
+      {
+        damage: 4,
+      }
+    ]);
+    const playerCurrentPos = player.pos.x;
+
+    follower.action((f) => {
+      f.moveTo(playerCurrentPos, height(),  300);
+      if (f.pos.y === height()) {
+        f.destroy();
+      }
+    });
+  });
+  return canceller;
+}
+
 export default function loadBoss(scoreCounter) {
   const player = get("player")[0];
 
@@ -8,7 +69,7 @@ export default function loadBoss(scoreCounter) {
     wait(2, () => {
       const boss = add([
         sprite("doom"),
-        pos(center().x, 180),
+        pos(center().x, -130),
         area({ scale: 0.8 }),
         scale(7),
         origin("center"),
@@ -18,43 +79,14 @@ export default function loadBoss(scoreCounter) {
         "boss",
         { damage: 5 }
       ]);
-      const canceller = loop(1.5, () => {
-        for(let n = 1; n <= 6; n++) {
-          add([
-            sprite("enemy-bullet"),
-            area({ scale: 0.3 }),
-            origin("center"),
-            pos(boss.pos.x, boss.pos.y + 40),
-            scale(2),
-            "enemy-bullet",
-            "enemy",
-            "healthless",
-            {
-              damage: 4,
-              ySpeed: 50 * (n / 3),
-              xSpeed: (6 - n) * 30
-            }
-          ]);
-        }
-        for(let n = 1; n <= 6; n++) {
-          add([
-            sprite("enemy-bullet"),
-            area({ scale: 0.3 }),
-            origin("center"),
-            pos(boss.pos.x, boss.pos.y + 40),
-            scale(2),
-            "enemy-bullet",
-            "enemy",
-            "healthless",
-            {
-              damage: 4,
-              ySpeed: 50 * (n / 3),
-              xSpeed: (6 - n) * -30
-            }
-          ]);
-        }
+      
+      let canceller = () => ({});
+      wait(4, () => {
+        canceller = loadBossShootingPattern(boss, player);
       });
+
       action("boss", (b) => {
+        b.moveTo(center().x, 180, 80);
         if (b.hp() <= 0) {
           b.destroy();
           canceller();
@@ -67,7 +99,12 @@ export default function loadBoss(scoreCounter) {
     action("enemy-bullet", (b) => {
       b.move(b.xSpeed, b.ySpeed);
 
-      if (b.pos.y > height() || (!b.is("healthless") && b.hp() <= 0) || b.pos.x < 0 || b.pos.x > width()) {
+      if (
+        b.pos.y > height()
+        || (!b.is("healthless") && b.hp() <= 0)
+        || b.pos.x < 0
+        || b.pos.x > width()
+      ) {
         b.destroy();
       }
     });
