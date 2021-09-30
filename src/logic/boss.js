@@ -5,7 +5,7 @@ function loadBossShootingPattern(boss, player) {
     for(let n = 1; n <= 6; n++) {
       add([
         sprite("enemy-bullet"),
-        area({ scale: 0.3 }),
+        area({ scale: 0.5 }),
         origin("center"),
         pos(boss.pos.x, boss.pos.y + 40),
         scale(2),
@@ -22,7 +22,7 @@ function loadBossShootingPattern(boss, player) {
     for(let n = 1; n <= 6; n++) {
       add([
         sprite("enemy-bullet"),
-        area({ scale: 0.3 }),
+        area({ scale: 0.5 }),
         origin("center"),
         pos(boss.pos.x, boss.pos.y + 40),
         scale(2),
@@ -38,7 +38,7 @@ function loadBossShootingPattern(boss, player) {
     }
     const follower = add([
       sprite("enemy-bullet"),
-      area({ scale: 0.3 }),
+      area({ scale: 0.5 }),
       origin("center"),
       pos(boss.pos.x, boss.pos.y + 40),
       scale(2),
@@ -79,7 +79,7 @@ export default function loadBoss(scoreCounter) {
         "boss",
         { damage: 5 }
       ]);
-      
+
       let canceller = () => ({});
       wait(4, () => {
         canceller = loadBossShootingPattern(boss, player);
