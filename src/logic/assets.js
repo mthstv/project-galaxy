@@ -4,7 +4,7 @@ export default function loadAssets() {
   loadSprite("galaxy-stars", "/assets/sprites/backgrounds/BGPJG3.png");
   loadSprite("space", "/assets/sprites/backgrounds/space-breelbo.jpg");
 
-  loadSprite("nav", "/assets/sprites/players/nav-new-spritesheet-320x320.png", {
+  loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {
     sliceX: 10,
     sliceY: 10,
     anims: {
@@ -35,7 +35,7 @@ export default function loadAssets() {
     },
   });
 
-  loadSprite("nav-dash", "/assets/sprites/players/nav-new-spritesheet-320x320.png", {
+  loadSprite("nav-dash", "/assets/sprites/players/nav-spritesheet-320x320.png", {
     sliceX: 10,
     sliceY: 10,
     anims: {
@@ -74,9 +74,6 @@ export default function loadAssets() {
     },
   });
 
-  loadSprite("doom", "/assets/sprites/enemies/doom-enemy-spritesheet-32x32.png");
-  loadSprite("enemy-bullet", "/assets/sprites/bullets/enemy-bullet.png");
-
   loadSprite("blue-bullet", "/assets/sprites/bullets/blue-spritesheet-180x18.png", {
     sliceX: 10,
     sliceY: 1,
@@ -96,7 +93,28 @@ export default function loadAssets() {
   loadSprite("special-point-filled", "/assets/sprites/players/meters/special/sp-filled-12x6.png");
   loadSprite("special-point-empty", "/assets/sprites/players/meters/special/sp-empty-12x6.png");
 
-  loadSprite("asteroid", "/assets/sprites/enemies/asteroid-enemy-spritesheet-100x27.png", {
+
+  loadSprite("doom", "/assets/sprites/enemies/doom-spritesheet-448x32.png", {
+    sliceX: 14,
+    sliceY: 1,
+    anims: {
+      closed: {
+        from: 0,
+        to: 0,
+      },
+      opening: {
+        from: 1,
+        to: 13,
+      },
+      idle: {
+        from: 9,
+        to: 13,
+      },
+    },
+  });
+  loadSprite("enemy-bullet", "/assets/sprites/bullets/enemy-bullet.png");
+
+  loadSprite("asteroid", "/assets/sprites/enemies/asteroid-spritesheet-100x27.png", {
     sliceX: 5,
     sliceY: 1,
     anims: {

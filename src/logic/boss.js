@@ -1,6 +1,7 @@
 import { BOSS_SPAWN_BACKGROUND_LIMIT } from "../helpers/constants.js";
 
 function loadBossShootingPattern(boss, player) {
+  boss.play("idle", { loop: true, speed: 3.5 });
   const canceller = loop(1.5, () => {
     for(let n = 1; n <= 6; n++) {
       add([
@@ -47,15 +48,12 @@ function loadBossShootingPattern(boss, player) {
       color(161, 83, 239),
       {
         damage: 4,
-      }
+      },
+      move(player.pos.angle(boss.pos), 400),
     ]);
-    const playerCurrentPos = player.pos.x;
 
     follower.action((f) => {
-      f.moveTo(playerCurrentPos, height(),  300);
-      if (f.pos.y === height()) {
-        f.destroy();
-      }
+      if (f.pos.y === height()) f.destroy();
     });
   });
   return canceller;
@@ -70,7 +68,7 @@ export default function loadBoss(scoreCounter) {
       const boss = add([
         sprite("doom"),
         pos(center().x, -130),
-        area({ scale: 0.8 }),
+        area({ scale: 0.5 }),
         scale(7),
         origin("center"),
         health(1800),
@@ -80,13 +78,18 @@ export default function loadBoss(scoreCounter) {
         { damage: 5 }
       ]);
 
+      boss.play("closed");
+
       let canceller = () => ({});
-      wait(4, () => {
+      wait(6, () => {
+        boss.play("opening");
+      })
+      wait(8, () => {
         canceller = loadBossShootingPattern(boss, player);
       });
 
       action("boss", (b) => {
-        b.moveTo(center().x, 180, 80);
+        b.moveTo(center().x, 180, 40);
         if (b.hp() <= 0) {
           b.destroy();
           canceller();
