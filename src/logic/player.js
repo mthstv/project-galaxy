@@ -35,6 +35,7 @@ export default function loadPlayer(scoreCounter) {
   player.play("idle", { loop: true });
 
   player.action(() => {
+    // player.angle = player.pos.angle(mousePos()) - 90;
     if (player.hp() <= 0) {
       const asteroidsDestroyed = player.asteroidsDestroyed;
       player.dead = true;

@@ -1,7 +1,9 @@
 export default function loadAssets() {
-  loadSprite("galaxy1", "/assets/sprites/backgrounds/BGPJG1.png");
-  loadSprite("galaxy2", "/assets/sprites/backgrounds/BGPJG2.png");
-  loadSprite("galaxy-stars", "/assets/sprites/backgrounds/BGPJG3.png");
+  loadSprite("boss-bg-1", "/assets/sprites/backgrounds/BGPJG-boss-fight-1.png");
+  loadSprite("boss-bg-2", "/assets/sprites/backgrounds/BGPJG-boss-fight-2.png");
+  loadSprite("asteroid-fields-bg-1", "/assets/sprites/backgrounds/BGPJG-asteroid-fields-1.png");
+  loadSprite("asteroid-fields-bg-2", "/assets/sprites/backgrounds/BGPJG-asteroid-fields-2.png");
+  loadSprite("galaxy-stars", "/assets/sprites/backgrounds/BGPJG.png");
   loadSprite("space", "/assets/sprites/backgrounds/space-breelbo.jpg");
 
   loadSprite("nav", "/assets/sprites/players/nav-spritesheet-320x320.png", {

@@ -4,9 +4,9 @@ import loadBoss from "./boss.js";
 export default function loadBackgrounds(scoreCounter) {
   const player = get("player")[0];
   const bgWidth = width() > 1280 ? width() : 1280;
-  const bgHeight = height() > 720 ? height() : 720;
+  const bgHeight = height();
   add([
-    sprite("galaxy1", { width: bgWidth, height: bgHeight }),
+    sprite("boss-bg-1", { width: bgWidth, height: bgHeight }),
     "bg",
     "first",
     pos(0, 0),
@@ -14,7 +14,7 @@ export default function loadBackgrounds(scoreCounter) {
   ]);
 
   add([
-    sprite("galaxy2", { width: bgWidth, height: bgHeight }),
+    sprite("boss-bg-2", { width: bgWidth, height: bgHeight }),
     "bg",
     "second",
     pos(0, -height()),
@@ -30,7 +30,7 @@ export default function loadBackgrounds(scoreCounter) {
 
       if (b.is("first")) {
         add([
-          sprite("galaxy1", { width: bgWidth, height: bgHeight + 2 }),
+          sprite("boss-bg-1", { width: bgWidth, height: bgHeight + 2 }),
           "bg",
           "first",
           pos(0, -height()),
@@ -39,7 +39,7 @@ export default function loadBackgrounds(scoreCounter) {
       }
       if (b.is("second")) {
         add([
-          sprite("galaxy2", { width: bgWidth, height: bgHeight + 2 }),
+          sprite("boss-bg-2", { width: bgWidth, height: bgHeight + 2 }),
           "bg",
           "second",
           pos(0, -height()),
