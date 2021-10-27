@@ -1,60 +1,47 @@
 import { BOSS_SPAWN_BACKGROUND_LIMIT } from "../helpers/constants.js";
 
-function loadBossShootingPattern(boss, player) {
+function loadBossShootingPattern(boss) {
   boss.play("idle", { loop: true, speed: 3.5 });
+  let counter = 0;
   const canceller = loop(1.5, () => {
+    console.log(counter);
     for(let n = 1; n <= 6; n++) {
       add([
         sprite("enemy-bullet"),
         area({ scale: 0.5 }),
         origin("center"),
-        pos(boss.pos.x, boss.pos.y + 40),
+        pos(boss.pos.x + (n % 2 === 0 ? 0 : 50), boss.pos.y + 40),
         scale(2),
+        health(8),
         "enemy-bullet",
         "enemy",
-        "healthless",
+        "hide-damage",
         {
           damage: 4,
           ySpeed: 50 * (n / 3),
           xSpeed: (6 - n) * 30
         }
       ]);
+      if(n < 6) {
+        add([
+          sprite("enemy-bullet"),
+          area({ scale: 0.5 }),
+          origin("center"),
+          pos(boss.pos.x - (n % 2 === 0 ? 0 : 50), boss.pos.y + 40),
+          scale(2),
+          health(8),
+          "enemy-bullet",
+          "enemy",
+          "hide-damage",
+          {
+            damage: 4,
+            ySpeed: 50 * (n / 3),
+            xSpeed: (6 - n) * -30
+          }
+        ]);
+      }
     }
-    for(let n = 1; n <= 6; n++) {
-      add([
-        sprite("enemy-bullet"),
-        area({ scale: 0.5 }),
-        origin("center"),
-        pos(boss.pos.x, boss.pos.y + 40),
-        scale(2),
-        "enemy-bullet",
-        "enemy",
-        "healthless",
-        {
-          damage: 4,
-          ySpeed: 50 * (n / 3),
-          xSpeed: (6 - n) * -30
-        }
-      ]);
-    }
-    const follower = add([
-      sprite("enemy-bullet"),
-      area({ scale: 0.5 }),
-      origin("center"),
-      pos(boss.pos.x, boss.pos.y + 40),
-      scale(2),
-      "enemy",
-      "healthless",
-      color(161, 83, 239),
-      {
-        damage: 4,
-      },
-      move(player.pos.angle(boss.pos), 400),
-    ]);
-
-    follower.action((f) => {
-      if (f.pos.y === height()) f.destroy();
-    });
+    counter++;
   });
   return canceller;
 }
@@ -85,7 +72,7 @@ export default function loadBoss(scoreCounter) {
         boss.play("opening");
       })
       wait(8, () => {
-        canceller = loadBossShootingPattern(boss, player);
+        canceller = loadBossShootingPattern(boss);
       });
 
       action("boss", (b) => {
