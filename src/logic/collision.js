@@ -4,7 +4,9 @@ export default function loadCollisions() {
   collides("enemy", "bullet", (e, b) => {
     if (!e.is("healthless")) {
       e.hurt(b.damage);
-      loadCounter(b.damage, e.pos);
+      if(!e.is("hide-damage")) {
+        loadCounter(b.damage, e.pos);
+      }
       play("hit", { volume: 0.05 })
     }
     b.destroy();
