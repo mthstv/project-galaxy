@@ -1,4 +1,10 @@
-import { PLAYER_TOTAL_LIFE, INITIAL_PLAYER_SHOOT_SPEED, PLAYER_SPECIAL_LIMIT, INITIAL_PLAYER_MOVE_SPEED } from "../helpers/constants.js";
+import {
+  PLAYER_TOTAL_LIFE,
+  INITIAL_PLAYER_SHOOT_SPEED,
+  PLAYER_SPECIAL_LIMIT,
+  INITIAL_PLAYER_MOVE_SPEED,
+  INITIAL_PLAYER_LVL
+} from "../helpers/constants.js";
 import loadPlayerHealthMeter from "./health.js";
 import loadPlayerSpecialMeter from "./special.js";
 
@@ -15,7 +21,7 @@ export default function loadPlayer(scoreCounter) {
       special: 0,
       shootSpeed: INITIAL_PLAYER_SHOOT_SPEED,
       moveSpeed: INITIAL_PLAYER_MOVE_SPEED,
-      lvl: 1,
+      lvl: INITIAL_PLAYER_LVL,
       dead: false,
       isAlive: () => !player.dead,
       invincible: false,
