@@ -26,4 +26,8 @@ export default function loadCollisions() {
       e.destroy();
     }
   });
+
+  collides("player", "collectable", (p, c) => {
+    c.destroy();
+  });
 }

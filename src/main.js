@@ -11,7 +11,7 @@ kaboom({
 	debug: true,
 	stretch: true,
 	letterbox: true,
-	scale: isMobile ? 1 : 0.7,
+	scale: 1,
 	clearColor: [ 0, 0, 0, 1 ],
 	font: "sinko",
 });

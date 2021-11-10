@@ -127,6 +127,18 @@ export default function loadAssets() {
     },
   });
 
+  
+  loadSprite("orb", "/assets/sprites/misc/orb.png", {
+    sliceX: 5,
+    sliceY: 1,
+    anims: {
+      idle: {
+        from: 0,
+        to: 4,
+      },
+    },
+  });
+
   loadSound("hit", "/assets/sounds/128971__deadpoetsocietyband__bass-drum.wav");
   loadSound("explosion", "/assets/sounds/170144__timgormly__8-bit-explosion2.mp3");
   loadSound("hurt", "/assets/sounds/448226__inspectorj__explosion-8-bit-01.wav");

@@ -4,6 +4,7 @@ import {
   SPECIAL_METER_GAIN_ON_KILL
 } from "../helpers/constants.js";
 import loadCounter from "./counter.js";
+import loadOrb from "./orb.js";
 
 export default function loadAsteroidMovement(scoreCounter) {
   const player = get("player")[0];
@@ -15,6 +16,7 @@ export default function loadAsteroidMovement(scoreCounter) {
     }
 
     if (a.hp() <= 0) {
+      loadOrb(a.pos);
       a.destroy();
       scoreCounter.value += (1 * a.size);
       player.asteroidsDestroyed += 1;
