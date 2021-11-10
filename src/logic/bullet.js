@@ -67,6 +67,7 @@ export default function loadBullet() {
             pos(player.pos.x - (12 * n), player.pos.y + (4 * n)),
             scale(1),
             rotate(-10),
+            color(255, 100, 0),
             "bullet",
             "diagonal-left",
             { damage: BULLET_DAMAGE / 4 }
@@ -78,6 +79,7 @@ export default function loadBullet() {
             pos(player.pos.x + (12 * n), player.pos.y + (4 * n)),
             scale(1),
             rotate(10),
+            color(255, 100, 0),
             "bullet",
             "diagonal-right",
             { damage: BULLET_DAMAGE / 4 }
