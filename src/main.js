@@ -10,8 +10,11 @@ kaboom({
 	global: true,
 	debug: true,
 	scale: 1,
-	clearColor: [ 0, 0, 0, 1 ],
+	width: 1280,
+	height: 720,
 	font: "sinko",
+	canvas: document.querySelector("#galaxy"),
+	background: [ 0, 0, 255, ],
 });
 
 loadAssets();

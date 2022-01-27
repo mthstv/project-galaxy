@@ -28,7 +28,7 @@ export default function loadPlayerSpecialMeter(specialLimit = PLAYER_SPECIAL_LIM
 
   if (player && player.lvl === PLAYER_MAX_LVL) {
     add([
-      text("MAX LVL"),
+      text("MAX LVL", { font: "sinko" }),
       pos(26, height() - 38),
       scale(1.5),
       layer("ui"),

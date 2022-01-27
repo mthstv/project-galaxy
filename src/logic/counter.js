@@ -4,7 +4,7 @@ export default function loadCounter(n, position, customScale, isHeal = false, so
   }
   if (isHeal) {
     add([
-      text("+" + n),
+      text("+" + n, { font: "sinko", size: 16 }),
       pos(position.x + rand(20, 50), position.y + rand(20, 50)),
       origin("botleft"),
       lifespan(0.5),
@@ -13,7 +13,7 @@ export default function loadCounter(n, position, customScale, isHeal = false, so
     ]);
   } else {
     add([
-      text("-" + n),
+      text("-" + n, { font: "sinko", size: 16 }),
       pos(position.x + rand(20, 50), position.y + rand(20, 50)),
       origin("botleft"),
       lifespan(0.5),

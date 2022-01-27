@@ -2,7 +2,7 @@ import { PLAYER_TOTAL_LIFE } from "../helpers/constants.js";
 
 export default function loadSpecialUpgrade(player) {
   add([
-    text("lvl up"),
+    text("lvl up", { font: "sinko" }),
     pos(player.pos.x + 20, player.pos.y - 20),
     origin("botleft"),
     lifespan(0.8),

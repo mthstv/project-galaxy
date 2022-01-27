@@ -1,6 +1,6 @@
 export default function loadUi() {
   const scoreCounter = add([
-    text(0),
+    text(0, { font: "sinko", size: 32 }),
     origin("topleft"),
     layer("ui"),
     scale(2),

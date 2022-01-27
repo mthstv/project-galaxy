@@ -18,32 +18,32 @@ export function loadMenuScene(currentLanguage) {
     ]);
 
     add([
-      text(currentLanguage.title),
-      pos(center()),
+      text(currentLanguage.title, { font: "sinko", size: 16 }),
+      pos(center().x, center().y - 150),
+      origin("center"),
+      layer("ui"),
+      scale(2),
+    ]);
+
+    add([
+      text(currentLanguage.subtitle, { font: "sinko", size: 16 }),
+      pos(center().x, center().y + 30),
       origin("center"),
       layer("ui"),
       scale(2),
     ]);
   
     add([
-      text(currentLanguage.subtitle),
-      pos(center().x, center().y + 60),
-      origin("center"),
-      layer("ui"),
-      scale(2),
-    ]);
-  
-    add([
-      text('developed by @m4ths_dev'),
-      pos(width(), height() - 20),
+      text('developed by @m4ths_dev', { font: "sinko", size: 16 }),
+      pos(width(), height() - 35),
       origin("right"),
       layer("ui"),
       scale(1),
     ]);
 
     add([
-      text('pixel arts by @m4ths_dev and @breelbo'),
-      pos(width(), height() - 10),
+      text('pixel arts by @m4ths_dev and @breelbo', { font: "sinko", size: 16 }),
+      pos(width(), height() - 15),
       origin("right"),
       layer("ui"),
       scale(1),
@@ -76,8 +76,8 @@ export function loadMenuScene(currentLanguage) {
     // });
 
     add([
-      text(currentLanguage.personalBest + playerBest),
-      pos(center().x, center().y + 380),
+      text(currentLanguage.personalBest + playerBest, { font: "sinko", size: 16 }),
+      pos(center().x, center().y + 200),
       origin("center"),
       layer("ui"),
       scale(2),

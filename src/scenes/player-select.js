@@ -15,7 +15,7 @@ export function loadMenuScene(currentLanguage) {
     ]);
   
     add([
-      text(currentLanguage.playerSelect),
+      text(currentLanguage.playerSelect, { font: "sinko" }),
       pos(center().x, height() - 80),
       origin("center"),
       layer("ui"),

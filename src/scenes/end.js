@@ -22,7 +22,7 @@ export function loadEndScene(currentLanguage) {
     ]);
 
     add([
-      text(currentLanguage.battleReport.title),
+      text(currentLanguage.battleReport.title, { font: "sinko" }),
       pos(center().x, center().y - 120),
       origin("center"),
       layer("ui"),
@@ -30,7 +30,7 @@ export function loadEndScene(currentLanguage) {
     ]);
     
     add([
-      text(currentLanguage.battleReport.asteroids + asteroidsDestroyed, 64),
+      text(currentLanguage.battleReport.asteroids + asteroidsDestroyed, { font: "sinko" }),
       pos(center().x, center().y + 80),
       origin("center"),
       layer("ui"),
@@ -38,7 +38,7 @@ export function loadEndScene(currentLanguage) {
     ]);
   
     add([
-      text(currentLanguage.battleReport.total + playerScore.value, 64),
+      text(currentLanguage.battleReport.total + playerScore.value, { font: "sinko" }),
       pos(center().x, center().y + 200),
       origin("center"),
       layer("ui"),

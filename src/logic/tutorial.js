@@ -1,6 +1,6 @@
 export default function loadTutorial(currentLanguage) {
   add([
-    text(currentLanguage.tutorialMovement),
+    text(currentLanguage.tutorialMovement, { font: "sinko" }),
     pos(center().x, center().y - 140),
     origin("center"),
     layer("ui"),
@@ -8,7 +8,7 @@ export default function loadTutorial(currentLanguage) {
     lifespan(5),
   ]);
   add([
-    text(currentLanguage.tutorialShooting),
+    text(currentLanguage.tutorialShooting, { font: "sinko" }),
     pos(center().x, center().y - 80),
     origin("center"),
     layer("ui"),
@@ -16,7 +16,7 @@ export default function loadTutorial(currentLanguage) {
     lifespan(5),
   ]);
   add([
-    text(currentLanguage.tutorialDodge),
+    text(currentLanguage.tutorialDodge, { font: "sinko" }),
     pos(center().x, center().y - 40),
     origin("center"),
     layer("ui"),
