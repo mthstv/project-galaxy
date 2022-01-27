@@ -11,7 +11,7 @@ export default function loadOrb(originPos) {
     color(0, 229, 255),
   ]);
   orb.play("idle", { loop: true });
-  orb.action(() => {
+  orb.onUpdate(() => {
     orb.moveTo(player.pos.x, player.pos.y, 700);
   })
 }

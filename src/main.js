@@ -9,8 +9,6 @@ import { browserLanguage, isMobile } from "./helpers/constants.js";
 kaboom({
 	global: true,
 	debug: true,
-	stretch: true,
-	letterbox: true,
 	scale: 1,
 	clearColor: [ 0, 0, 0, 1 ],
 	font: "sinko",

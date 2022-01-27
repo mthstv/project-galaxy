@@ -54,17 +54,17 @@ export default function loadButtonOverlay() {
     "pointer",
   ]);
 
-  mouseDown((pos) => {
+  onMouseDown((pos) => {
     pointer.pos = pos;
   });
 
-  mouseRelease(() => {
+  onMouseRelease(() => {
     pointer.pos.x = 0;
     pointer.pos.y = 0;
   })
 
   // MOUSE MOVEMENTS
-  pointer.action(() => {
+  pointer.onUpdate(() => {
     if (pointer.isColliding(moveUp)) {
       if (player.pos.y > 0) {
         player.move(0, -player.moveSpeed);

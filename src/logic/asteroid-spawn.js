@@ -27,7 +27,7 @@ export default function loadAsteroidSpawn(asteroidSpawnRate = 0.4) {
         }
       ]);
       asteroid.play("fly", { loop: true });
-      player.action(() => {
+      player.onUpdate(() => {
         if (player.isColliding(asteroid) && !player.isInvincible()) {
           player.hurt(asteroid.damage);
           loadCounter(asteroid.damage, player.pos, 1.8, false, "hurt");

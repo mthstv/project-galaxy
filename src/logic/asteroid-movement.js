@@ -8,7 +8,7 @@ import loadOrb from "./orb.js";
 
 export default function loadAsteroidMovement(scoreCounter) {
   const player = get("player")[0];
-  action("asteroid", (a) => {
+  onUpdate("asteroid", (a) => {
     a.move(a.angle * (-6) * (1 + (player.lvl / 10)), (ASTEROID_SPEED / a.size) * (1 + (player.lvl / 10)));
 
     if (a.pos.y > height() + 40 || a.pos.x > width() + 40 || a.pos.x < -40) {

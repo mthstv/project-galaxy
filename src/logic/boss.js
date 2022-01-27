@@ -75,7 +75,7 @@ export default function loadBoss(scoreCounter) {
         canceller = loadBossShootingPattern(boss);
       });
 
-      action("boss", (b) => {
+      onUpdate("boss", (b) => {
         b.moveTo(center().x, 180, 40);
         if (b.hp() <= 0) {
           b.destroy();
@@ -86,7 +86,7 @@ export default function loadBoss(scoreCounter) {
         }
       });
     });
-    action("enemy-bullet", (b) => {
+    onUpdate("enemy-bullet", (b) => {
       b.move(b.xSpeed, b.ySpeed);
 
       if (

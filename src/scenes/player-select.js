@@ -22,10 +22,10 @@ export function loadMenuScene(currentLanguage) {
       scale(2),
     ]);
 
-    keyPress("space", () => {
+    onKeyPress("space", () => {
       go("game");
     });
-    mouseClick(() => {
+    onClick(() => {
       go("game");
     });
   });

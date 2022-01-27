@@ -1,7 +1,7 @@
 import loadCounter from "./counter.js";
 
 export default function loadCollisions() {
-  collides("enemy", "bullet", (e, b) => {
+  onCollide("enemy", "bullet", (e, b) => {
     if (!e.is("healthless")) {
       e.hurt(b.damage);
       if(!e.is("hide-damage")) {
@@ -12,7 +12,7 @@ export default function loadCollisions() {
     b.destroy();
   });
 
-  collides("player", "enemy", (p, e) => {
+  onCollide("player", "enemy", (p, e) => {
     if (p.isInvincible()) {
       return;
     }
@@ -27,7 +27,7 @@ export default function loadCollisions() {
     }
   });
 
-  collides("player", "collectable", (p, c) => {
+  onCollide("player", "collectable", (p, c) => {
     c.destroy();
   });
 }

@@ -21,7 +21,7 @@ export default function loadBackgrounds(scoreCounter) {
     layer("bg"),
   ]);
 
-  action("bg", (b) => {
+  onUpdate("bg", (b) => {
     b.move(0, BACKGROUND_SPEED);
     if (b.pos.y > height()) {
       b.destroy();

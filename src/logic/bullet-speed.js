@@ -1,7 +1,7 @@
 import { BULLET_SPEED } from "../helpers/constants.js";
 
 export default function loadBulletSpeed() {
-  action("bullet", (b) => {
+  onUpdate("bullet", (b) => {
     if (b.is("diagonal-left")) {
       b.move(-(BULLET_SPEED / 5), -BULLET_SPEED);
     } else if (b.is("diagonal-right")) {

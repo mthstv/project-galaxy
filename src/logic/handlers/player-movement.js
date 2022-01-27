@@ -1,83 +1,83 @@
 export default function handlePlayerMovementAnimations() {
   const player = get("player")[0];
 
-  keyDown(["up", "w"], () => {
+  onKeyDown(["up", "w"], () => {
     if (player.pos.y > 0) {
       player.move(0, -player.moveSpeed);
     }
   });
 
-  keyDown(["down", "s"], () => {
+  onKeyDown(["down", "s"], () => {
     if (player.pos.y < height()) {
       player.move(0, player.moveSpeed);
     }
   });
 
-  keyDown(["left", "a"], () => {
+  onKeyDown(["left", "a"], () => {
     if (player.pos.x > 0) {
       player.move(-player.moveSpeed, 0);
     }
   });
 
-  keyDown(["right", "d"], () => {
+  onKeyDown(["right", "d"], () => {
     if (player.pos.x < width()) {
       player.move(player.moveSpeed, 0);
     }
   });
 
   // animations 
-  keyPress(["left", "a"], () => {
-    if (keyIsDown("x")) {
+  onKeyPress(["left", "a"], () => {
+    if (isKeyDown("x")) {
       player.play("leanedLeftShoot", { loop: true });
     } else {
       player.play("leanedLeft", { loop: true });
     }
   });
-  keyRelease(["left", "a"], () => {
-    if (keyIsDown("x") && keyIsDown("right")) {
+  onKeyRelease(["left", "a"], () => {
+    if (isKeyDown("x") && isKeyDown("right")) {
       player.play("leanedRightShoot", { loop: true });
-    } else if (keyIsDown("right")) {
+    } else if (isKeyDown("right")) {
       player.play("leanedRight", { loop: true });
-    } else if (keyIsDown("x")) {
+    } else if (isKeyDown("x")) {
       player.play("shoot", { loop: true });
     } else {
       player.play("idle", { loop: true });
     }
   });
 
-  keyPress(["right", "d"], () => {
-    if (keyIsDown("x")) {
+  onKeyPress(["right", "d"], () => {
+    if (isKeyDown("x")) {
       player.play("leanedRightShoot", { loop: true });
     } else {
       player.play("leanedRight", { loop: true });
     }
   });
-  keyRelease(["right", "d"], () => {
-    if (keyIsDown("x") && keyIsDown("left")) {
+  onKeyRelease(["right", "d"], () => {
+    if (isKeyDown("x") && isKeyDown("left")) {
       player.play("leanedLeftShoot", { loop: true });
-    } else if (keyIsDown("left")) {
+    } else if (isKeyDown("left")) {
       player.play("leanedLeft", { loop: true });
-    } else if (keyIsDown("x")) {
+    } else if (isKeyDown("x")) {
       player.play("shoot", { loop: true });
     } else {
       player.play("idle", { loop: true });
     }
   });
 
-  keyPress("x", () => {
-    if (keyIsDown("left")) {
+  onKeyPress("x", () => {
+    if (isKeyDown("left")) {
       player.play("leanedLeftShoot", { loop: true });
-    } else if (keyIsDown("right")) {
+    } else if (isKeyDown("right")) {
       player.play("leanedRightShoot", { loop: true });
     } else {
       player.play("shoot", { loop: true });
     }
   });
 
-  keyRelease("x", () => {
-    if (keyIsDown("left")) {
+  onKeyRelease("x", () => {
+    if (isKeyDown("left")) {
       player.play("leanedLeft", { loop: true });
-    } else if (keyIsDown("right")) {
+    } else if (isKeyDown("right")) {
       player.play("leanedRight", { loop: true });
     } else {
       player.play("idle", { loop: true });

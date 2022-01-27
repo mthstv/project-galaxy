@@ -45,10 +45,10 @@ export function loadEndScene(currentLanguage) {
       scale(3),
     ]);
   
-    keyPress("space", () => {
+    onKeyPress("space", () => {
       go("menu", playerBest);
     });
-    mouseClick(() => {
+    onClick(() => {
       go("menu", playerBest);
     });
   });

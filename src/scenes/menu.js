@@ -71,7 +71,7 @@ export function loadMenuScene(currentLanguage) {
     //   }
     // });
 
-    // keyPressRep("backspace", () => {
+    // onKeyPressRep("backspace", () => {
     //   input.text = input.text.substring(0, input.text.length - 1);
     // });
 
@@ -83,11 +83,11 @@ export function loadMenuScene(currentLanguage) {
       scale(2),
     ]);
 
-    keyPress("space", () => {
+    onKeyPress("space", () => {
       // setData("player-name", input.text);
       go("game");
     });
-    mouseClick(() => {
+    onClick(() => {
       go("game");
     });
   });
