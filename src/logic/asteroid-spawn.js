@@ -30,7 +30,7 @@ export default function loadAsteroidSpawn(asteroidSpawnRate = 0.4) {
       player.onUpdate(() => {
         if (player.isColliding(asteroid) && !player.isInvincible()) {
           player.hurt(asteroid.damage);
-          loadCounter(asteroid.damage, player.pos, 1.8, false, "hurt");
+          loadCounter(asteroid.damage, player.pos, 1.8, false, false, "hurt");
       
           player.reloadMeters();
       

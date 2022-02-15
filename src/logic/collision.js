@@ -17,7 +17,7 @@ export default function loadCollisions() {
       return;
     }
     p.hurt(e.damage);
-    loadCounter(e.damage, p.pos, 1.8, false, "hurt");
+    loadCounter(e.damage, p.pos, 1.8, false, false, "hurt");
 
     p.reloadMeters();
 
