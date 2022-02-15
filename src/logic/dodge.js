@@ -1,7 +1,7 @@
 export default function loadDodge() {
   const player = get("player")[0];
 
-  onKeyPress("z", () => {
+  onKeyPress(["z", "k"], () => {
     if (!player.isAlive()) {
       return;
     }

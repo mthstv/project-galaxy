@@ -8,7 +8,6 @@ import loadBullet from "../logic/bullet.js";
 import loadPlayerHealthMeter from "../logic/health.js";
 import loadPlayerSpecialMeter from "../logic/special.js";
 import loadButtonOverlay from "../logic/button-overlay.js";
-import { isMobile } from "../helpers/constants.js";
 import loadBulletSpeed from "../logic/bullet-speed.js";
 import loadDodge from "../logic/dodge.js";
 import loadAsteroidMovement from "../logic/asteroid-movement.js";
@@ -34,10 +33,6 @@ export function loadGameScene(currentLanguage) {
 
     loadPlayerHealthMeter();
     loadPlayerSpecialMeter();
-
-    if (isMobile) {
-      loadButtonOverlay();
-    }
 
     const asteroidSpawnCanceller = loadAsteroidSpawn();
     loadAsteroidMovement(scoreCounter);

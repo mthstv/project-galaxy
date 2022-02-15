@@ -64,7 +64,7 @@ export default function handlePlayerMovementAnimations() {
     }
   });
 
-  onKeyPress("x", () => {
+  onKeyPress(["x", "l"], () => {
     if (isKeyDown("left")) {
       player.play("leanedLeftShoot", { loop: true });
     } else if (isKeyDown("right")) {
@@ -74,7 +74,7 @@ export default function handlePlayerMovementAnimations() {
     }
   });
 
-  onKeyRelease("x", () => {
+  onKeyRelease(["x", "l"], () => {
     if (isKeyDown("left")) {
       player.play("leanedLeft", { loop: true });
     } else if (isKeyDown("right")) {
