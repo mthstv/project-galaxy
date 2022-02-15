@@ -1,5 +1,5 @@
 import {
-  PLAYER_TOTAL_LIFE,
+  INITIAL_PLAYER_TOTAL_LIFE,
   INITIAL_PLAYER_SHOOT_SPEED,
   PLAYER_SPECIAL_LIMIT,
   INITIAL_PLAYER_MOVE_SPEED,
@@ -15,7 +15,7 @@ export default function loadPlayer(scoreCounter) {
     scale(2),
     area({ scale: 0.6 }),
     origin("center"),
-    health(PLAYER_TOTAL_LIFE),
+    health(INITIAL_PLAYER_TOTAL_LIFE),
     "player",
     {
       special: 0,
@@ -28,13 +28,31 @@ export default function loadPlayer(scoreCounter) {
       isInvincible: () => player.invincible,
       reloadMeters: () => {
         destroyAll("hp");
-        loadPlayerHealthMeter(PLAYER_TOTAL_LIFE, player.hp());
+        loadPlayerHealthMeter(INITIAL_PLAYER_TOTAL_LIFE, player.hp());
 
         destroyAll("sp");
         loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, player.special);
       },
       backgroundProgression: 0,
       asteroidsDestroyed: 0,
+      powerUps: {
+        meleeThrusts: 0, // Adds a melee hitbox in front of the player, more = more damage
+        bullets: 0, // Adds more bullets to your shots
+        diagonalBullets: 0, // Adds diagonal bullets to your shots
+        rockets: 0, // Adds roaming rockets to your shots
+        thunders: 0, // Adds thunderbolts to your shots
+        beams: 0, // Adds a ray beam to your shots
+        defenses: 0, // Adds an orb that rotates around the player, blocking shots
+        helpers: 0, // Adds a helper drone that shoots weaker shots
+        heals: 0, // Heals the player for 80% > 50% > 20%
+        spMultipliers: 1, // Levels up faster then usual
+        knockbackBullets: 0, // Adds knockback effect to all shots
+        pierceBullets: 0, // Adds piercing effect to all shots
+        seekingBullets: 0, // Adds roaming effect to all shots
+        moveSpeedMultiplier: 1, // Speeds up the player
+        attackSpeedMultiplier: 1, // Speeds up player's attack speed
+        dodgeIFramesMultiplier: 1, // Adds more iframes to the dodge skill
+      }
     }
   ]);
 

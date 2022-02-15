@@ -1,4 +1,4 @@
-import { PLAYER_TOTAL_LIFE } from "../helpers/constants.js";
+import { handleRandomPoweUps } from './power-ups.js';
 
 export default function loadSpecialUpgrade(player) {
   add([
@@ -10,9 +10,8 @@ export default function loadSpecialUpgrade(player) {
     color(0, 177, 255)
   ]);
   player.lvl += 1;
-  if (player.hp() < PLAYER_TOTAL_LIFE){
-    player.heal(1);
-  }
-  player.reloadMeters();
+
+  handleRandomPoweUps();
+
   play("upgrade", { volume: 2 });
 }
