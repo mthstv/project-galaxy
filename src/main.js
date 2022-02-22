@@ -14,8 +14,10 @@ kaboom({
 	height: 720,
 	font: "sinko",
 	canvas: document.querySelector("#galaxy"),
-	background: [ 0, 0, 255, ],
+	background: [0, 0, 0],
 });
+
+volume(0.2);
 
 loadAssets();
 
