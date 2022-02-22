@@ -148,4 +148,7 @@ export default function loadAssets() {
 
   loadSprite("arrow-button", "/assets/sprites/buttons/arrow.png");
   loadSprite("pointer", "/assets/sprites/buttons/pointer.png");
+
+  loadSprite("heal-power-up", "/assets/sprites/power-ups/heal.png");
+  loadSprite("bullet-power-up", "/assets/sprites/power-ups/bullet-up.png");
 }
