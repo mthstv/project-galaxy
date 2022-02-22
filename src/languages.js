@@ -11,6 +11,11 @@ export const pt = {
     "title": "FIM DA BATALHA",
     "asteroids": "Asteroides destruidos: ",
     "total": "Total de pontos: ",
+  },
+  "powerUps": {
+    "selection": "Pressione",
+    "heal": "Curar",
+    "bullet": "Bala"
   }
 }
 
@@ -27,6 +32,11 @@ export const en = {
     "title": "BATTLE REPORT",
     "asteroids": "Asteroids destroyed: ",
     "total": "Total points: ",
+  },
+  "powerUps": {
+    "selection": "Press",
+    "heal": "Heal",
+    "bullet": "Bullet"
   }
 }
 
