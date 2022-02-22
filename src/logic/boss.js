@@ -4,7 +4,6 @@ function loadBossShootingPattern(boss) {
   boss.play("idle", { loop: true, speed: 3.5 });
   let counter = 0;
   const canceller = loop(1.5, () => {
-    console.log(counter);
     for(let n = 1; n <= 6; n++) {
       add([
         sprite("enemy-bullet"),
