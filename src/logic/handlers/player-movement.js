@@ -2,24 +2,28 @@ export default function handlePlayerMovementAnimations() {
   const player = get("player")[0];
 
   onKeyDown(["up", "w"], () => {
+    if (debug.paused) return;
     if (player.pos.y > 0) {
       player.move(0, -player.moveSpeed);
     }
   });
 
   onKeyDown(["down", "s"], () => {
+    if (debug.paused) return;
     if (player.pos.y < height()) {
       player.move(0, player.moveSpeed);
     }
   });
 
   onKeyDown(["left", "a"], () => {
+    if (debug.paused) return;
     if (player.pos.x > 0) {
       player.move(-player.moveSpeed, 0);
     }
   });
 
   onKeyDown(["right", "d"], () => {
+    if (debug.paused) return;
     if (player.pos.x < width()) {
       player.move(player.moveSpeed, 0);
     }
@@ -27,6 +31,7 @@ export default function handlePlayerMovementAnimations() {
 
   // animations 
   onKeyPress(["left", "a"], () => {
+    if (debug.paused) return;
     if (isKeyDown("x")) {
       player.play("leanedLeftShoot", { loop: true });
     } else {
@@ -34,6 +39,7 @@ export default function handlePlayerMovementAnimations() {
     }
   });
   onKeyRelease(["left", "a"], () => {
+    if (debug.paused) return;
     if (isKeyDown("x") && isKeyDown("right")) {
       player.play("leanedRightShoot", { loop: true });
     } else if (isKeyDown("right")) {
@@ -46,6 +52,7 @@ export default function handlePlayerMovementAnimations() {
   });
 
   onKeyPress(["right", "d"], () => {
+    if (debug.paused) return;
     if (isKeyDown("x")) {
       player.play("leanedRightShoot", { loop: true });
     } else {
@@ -53,6 +60,7 @@ export default function handlePlayerMovementAnimations() {
     }
   });
   onKeyRelease(["right", "d"], () => {
+    if (debug.paused) return;
     if (isKeyDown("x") && isKeyDown("left")) {
       player.play("leanedLeftShoot", { loop: true });
     } else if (isKeyDown("left")) {
@@ -65,6 +73,7 @@ export default function handlePlayerMovementAnimations() {
   });
 
   onKeyPress(["x", "l"], () => {
+    if (debug.paused) return;
     if (isKeyDown("left")) {
       player.play("leanedLeftShoot", { loop: true });
     } else if (isKeyDown("right")) {
@@ -75,6 +84,7 @@ export default function handlePlayerMovementAnimations() {
   });
 
   onKeyRelease(["x", "l"], () => {
+    if (debug.paused) return;
     if (isKeyDown("left")) {
       player.play("leanedLeft", { loop: true });
     } else if (isKeyDown("right")) {

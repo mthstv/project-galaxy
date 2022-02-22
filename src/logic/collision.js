@@ -1,3 +1,4 @@
+import { PLAYER_MAX_LVL, SPECIAL_METER_GAIN_ON_KILL } from "../helpers/constants.js";
 import loadCounter from "./counter.js";
 
 export default function loadCollisions() {
@@ -7,7 +8,7 @@ export default function loadCollisions() {
       if(!e.is("hide-damage")) {
         loadCounter(b.damage, e.pos);
       }
-      play("hit", { volume: 0.05 })
+      play("hit", { volume: 0.02 })
     }
     b.destroy();
   });
@@ -17,7 +18,7 @@ export default function loadCollisions() {
       return;
     }
     p.hurt(e.damage);
-    loadCounter(e.damage, p.pos, 1.8, false, false, "hurt");
+    loadCounter(e.damage, p.pos, 1.8, false, "hurt");
 
     p.reloadMeters();
 
@@ -29,5 +30,16 @@ export default function loadCollisions() {
 
   onCollide("player", "collectable", (p, c) => {
     c.destroy();
+
+    const trails = get("trail");
+    trails.map(trail => trail.destroy());
+
+    loadCounter(1, p.pos, null, true, null, [0, 198, 255]);
+
+
+    if (p.backgroundProgression < PLAYER_MAX_LVL) {
+      p.special += SPECIAL_METER_GAIN_ON_KILL;
+    }
+    p.reloadMeters();
   });
 }

@@ -37,7 +37,7 @@ export default function loadPlayer(scoreCounter) {
       asteroidsDestroyed: 0,
       powerUps: {
         meleeThrusts: 0, // Adds a melee hitbox in front of the player, more = more damage
-        bullets: 0, // Adds more bullets to your shots
+        bullets: 1, // Adds more bullets to your shots
         diagonalBullets: 0, // Adds diagonal bullets to your shots
         rockets: 0, // Adds roaming rockets to your shots
         thunders: 0, // Adds thunderbolts to your shots

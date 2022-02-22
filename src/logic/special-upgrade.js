@@ -1,6 +1,8 @@
-import { handleRandomPoweUps } from './power-ups.js';
+import { loadPowerUpUi } from './ui.js';
+import loadLanguage from "../languages.js";
+import { browserLanguage } from "../helpers/constants.js";
 
-export default function loadSpecialUpgrade(player) {
+export default async function loadSpecialUpgrade(player) {
   add([
     text("lvl up", { font: "sinko" }),
     pos(player.pos.x + 20, player.pos.y - 20),
@@ -11,7 +13,9 @@ export default function loadSpecialUpgrade(player) {
   ]);
   player.lvl += 1;
 
-  handleRandomPoweUps();
+  play("upgrade", { volume: 1 });
 
-  play("upgrade", { volume: 2 });
+  const currentLanguage = await loadLanguage(browserLanguage);
+  loadPowerUpUi(currentLanguage);
+  // handleRandomPoweUps();
 }
