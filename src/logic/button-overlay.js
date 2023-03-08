@@ -1,57 +1,57 @@
 export default function loadButtonOverlay() {
-  const player = get("player")[0];
+  const player = get('player')[0];
 
   const moveUp = add([
-    sprite("arrow-button"),
+    sprite('arrow-button'),
     pos(center().x, height() - 205),
     scale(5),
     area(),
     rotate(180),
-    origin("center"),
-    layer("overlay"),
-    "arrow",
+    anchor('center'),
+    z(4),
+    'arrow',
   ]);
 
   const moveRight = add([
-    sprite("arrow-button"),
+    sprite('arrow-button'),
     pos(center().x + 75, height() - 130),
     scale(5),
     area(),
-    origin("center"),
+    anchor('center'),
     rotate(270),
-    layer("overlay"),
-    "arrow",
+    z(4),
+    'arrow',
   ]);
 
   const moveLeft = add([
-    sprite("arrow-button"),
+    sprite('arrow-button'),
     pos(center().x - 75, height() - 130),
     scale(5),
     area(),
-    origin("center"),
+    anchor('center'),
     rotate(90),
-    layer("overlay"),
-    "arrow",
+    z(4),
+    'arrow',
   ]);
 
   const moveDown = add([
-    sprite("arrow-button"),
+    sprite('arrow-button'),
     pos(center().x, height() - 55),
     scale(5),
     area(),
-    origin("center"),
-    layer("overlay"),
-    "arrow",
+    anchor('center'),
+    z(4),
+    'arrow',
   ]);
 
   let pointer = add([
-    sprite("pointer"),
+    sprite('pointer'),
     pos(mousePos()),
     scale(2),
     area({ scale: 1.5 }),
-    origin("center"),
-    layer("overlay"),
-    "pointer",
+    anchor('center'),
+    z(4),
+    'pointer',
   ]);
 
   onMouseDown((pos) => {
@@ -61,7 +61,7 @@ export default function loadButtonOverlay() {
   onMouseRelease(() => {
     pointer.pos.x = 0;
     pointer.pos.y = 0;
-  })
+  });
 
   // MOUSE MOVEMENTS
   pointer.onUpdate(() => {

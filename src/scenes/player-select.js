@@ -2,31 +2,28 @@ export function loadMenuScene(currentLanguage) {
   const bgWidth = width() > 1280 ? width() : 1280;
   const bgHeight = height() > 720 ? height() : 720;
 
-  scene("menu", () => {
-    layers([
-      "bg",
-      "ui",
-    ], "menu");
+  scene('menu', () => {
+    const bg = add([fixed(), z(0)]);
 
-    add([
-      sprite("galaxy3", { width: bgWidth, height: bgHeight, }),
+    const ui = add([fixed(), z(1)]);
+
+    bg.add([
+      sprite('galaxy3', { width: bgWidth, height: bgHeight }),
       pos(0, 0),
-      layer("bg"),
     ]);
-  
-    add([
-      text(currentLanguage.playerSelect, { font: "sinko" }),
+
+    ui.add([
+      text(currentLanguage.playerSelect, { font: 'sinko' }),
       pos(center().x, height() - 80),
-      origin("center"),
-      layer("ui"),
+      anchor('center'),
       scale(2),
     ]);
 
-    onKeyPress("space", () => {
-      go("game");
+    onKeyPress('space', () => {
+      go('game');
     });
     onClick(() => {
-      go("game");
+      go('game');
     });
   });
 }

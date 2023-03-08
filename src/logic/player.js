@@ -3,20 +3,21 @@ import {
   INITIAL_PLAYER_SHOOT_SPEED,
   PLAYER_SPECIAL_LIMIT,
   INITIAL_PLAYER_MOVE_SPEED,
-  INITIAL_PLAYER_LVL
-} from "../helpers/constants.js";
-import loadPlayerHealthMeter from "./health.js";
-import loadPlayerSpecialMeter from "./special.js";
+  INITIAL_PLAYER_LVL,
+} from '../helpers/constants.js';
+import loadPlayerHealthMeter from './health.js';
+import loadPlayerSpecialMeter from './special.js';
 
 export default function loadPlayer(scoreCounter) {
   const player = add([
-    sprite("nav"),
+    sprite('nav'),
+    z(100),
     pos(center().x, height() - 100),
     scale(2),
     area({ scale: 0.6 }),
-    origin("center"),
+    anchor('center'),
     health(INITIAL_PLAYER_TOTAL_LIFE),
-    "player",
+    'player',
     {
       special: 0,
       shootSpeed: INITIAL_PLAYER_SHOOT_SPEED,
@@ -27,10 +28,10 @@ export default function loadPlayer(scoreCounter) {
       invincible: false,
       isInvincible: () => player.invincible,
       reloadMeters: () => {
-        destroyAll("hp");
+        destroyAll('hp');
         loadPlayerHealthMeter(INITIAL_PLAYER_TOTAL_LIFE, player.hp());
 
-        destroyAll("sp");
+        destroyAll('sp');
         loadPlayerSpecialMeter(PLAYER_SPECIAL_LIMIT, player.special);
       },
       backgroundProgression: 0,
@@ -52,11 +53,11 @@ export default function loadPlayer(scoreCounter) {
         moveSpeedMultiplier: 1, // Speeds up the player
         attackSpeedMultiplier: 1, // Speeds up player's attack speed
         dodgeIFramesMultiplier: 1, // Adds more iframes to the dodge skill
-      }
-    }
+      },
+    },
   ]);
 
-  player.play("idle", { loop: true });
+  player.play('idle', { loop: true });
 
   player.onUpdate(() => {
     // player.angle = player.pos.angle(mousePos()) - 90;
@@ -64,12 +65,12 @@ export default function loadPlayer(scoreCounter) {
       const asteroidsDestroyed = player.asteroidsDestroyed;
       player.dead = true;
       player.destroy();
-      
+
       wait(0.5, () => {
-        go("end", scoreCounter, asteroidsDestroyed);
-      })
+        go('end', scoreCounter, asteroidsDestroyed);
+      });
     }
-  })
+  });
 
   return player;
 }
