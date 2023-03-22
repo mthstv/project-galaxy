@@ -17,6 +17,8 @@ kaboom({
   background: [0, 0, 0],
 });
 
+loadFont('sinko', '../fonts/apl386.ttf', 6, 8);
+
 volume(0.2);
 
 loadAssets();
