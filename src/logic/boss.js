@@ -80,11 +80,12 @@ export default function loadBoss(scoreCounter) {
         area({ scale: 0.5 }),
         scale(7),
         origin('center'),
-        health(1800),
+        health(800),
         layer('game'),
         'enemy',
         'boss',
         { damage: 5 },
+        move(),
       ]);
 
       boss.play('closed');
