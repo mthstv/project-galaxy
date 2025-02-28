@@ -85,7 +85,6 @@ export default function loadBoss(scoreCounter) {
         'enemy',
         'boss',
         { damage: 5 },
-        move(),
       ]);
 
       boss.play('closed');
